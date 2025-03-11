@@ -5514,11 +5514,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart\\ShoppingCart-Backend\\backend\\Store.Tests\\Store.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Tests\\Store.Tests.csproj",
       "projectName": "Store.Tests",
-      "projectPath": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart\\ShoppingCart-Backend\\backend\\Store.Tests\\Store.Tests.csproj",
+      "projectPath": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Tests\\Store.Tests.csproj",
       "packagesPath": "C:\\Users\\Artem\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart\\ShoppingCart-Backend\\backend\\Store.Tests\\obj\\",
+      "outputPath": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

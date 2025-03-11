@@ -42,3 +42,15 @@ C:\Users\Artem\Documents\repos\ShoppingCart\ShoppingCart-Backend\backend\Store.M
 C:\Users\Artem\Documents\repos\ShoppingCart\ShoppingCart-Backend\backend\Store.Models\obj\Debug\net8.0\refint\Store.Models.dll
 C:\Users\Artem\Documents\repos\ShoppingCart\ShoppingCart-Backend\backend\Store.Models\obj\Debug\net8.0\Store.Models.pdb
 C:\Users\Artem\Documents\repos\ShoppingCart\ShoppingCart-Backend\backend\Store.Models\obj\Debug\net8.0\ref\Store.Models.dll
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Models\bin\Debug\net8.0\Store.Models.deps.json
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Models\bin\Debug\net8.0\Store.Models.dll
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Models\bin\Debug\net8.0\Store.Models.pdb
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Models\obj\Debug\net8.0\Store.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Models\obj\Debug\net8.0\Store.Models.AssemblyInfoInputs.cache
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Models\obj\Debug\net8.0\Store.Models.AssemblyInfo.cs
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Models\obj\Debug\net8.0\Store.Models.csproj.CoreCompileInputs.cache
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Models\obj\Debug\net8.0\Store.Models.sourcelink.json
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Models\obj\Debug\net8.0\Store.Models.dll
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Models\obj\Debug\net8.0\refint\Store.Models.dll
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Models\obj\Debug\net8.0\Store.Models.pdb
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Models\obj\Debug\net8.0\ref\Store.Models.dll
