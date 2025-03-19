@@ -25,7 +25,7 @@ namespace Store.Infrastracture.DAL
             return await repo.GetAll();
         }
 
-        public async Task<Product> GetById(int id)
+        public async Task<Product> GetById(Guid id)
         {
             Product? selectedProduct;
             try

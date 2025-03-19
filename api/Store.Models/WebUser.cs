@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Store.Models;
 
-public partial class WebUser : StoreEntity
+public class WebUser : StoreEntity
 {
     public string UserEmail { get; set; } = null!;
 

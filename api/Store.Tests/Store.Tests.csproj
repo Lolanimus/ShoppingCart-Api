@@ -21,11 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Store.Infrastructure\Store.Infrastracture.csproj" />
+    <ProjectReference Include="../Store.Infrastructure/Store.Infrastracture.csproj" />
+    <ProjectReference Include="../Store.ViewModels/Store.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

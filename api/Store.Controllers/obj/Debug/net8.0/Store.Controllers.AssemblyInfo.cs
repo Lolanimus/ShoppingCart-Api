@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Store.Controllers")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+37acc56ae6c0bfcf37d3660f5bae4ae6d6f80ee9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+542b4f04972b1ff95112a4acd42fb639800975d9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Store.Controllers")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Store.Controllers")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

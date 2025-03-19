@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 namespace Store.Models;
 
-public partial class Product : StoreEntity
+public class Product : StoreEntity
 {
-
     public string ProductName { get; set; } = null!;
 
     public string? ProductGender { get; set; }
@@ -15,5 +14,4 @@ public partial class Product : StoreEntity
     public decimal ProductPrice { get; set; }
 
     public string? ProductDesc { get; set; }
-
 }

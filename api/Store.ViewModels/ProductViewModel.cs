@@ -14,7 +14,7 @@ namespace Store.ViewModels
     {
         private readonly ProductDAO _dao;
 
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string ProductName { get; set; } = null!;
 
@@ -33,11 +33,11 @@ namespace Store.ViewModels
             _dao = new ProductDAO();
         }
 
-        public async Task GetById()
+        public async Task<Product> GetById()
         {
+            Product product = await _dao.GetById(Id);
             try
             {
-                Product product = await _dao.GetById(Id);
                 Id = product.Id;
                 ProductName = product.ProductName;
                 ProductGender = product.ProductGender;
@@ -59,6 +59,7 @@ namespace Store.ViewModels
                 MethodBase.GetCurrentMethod()!.Name + " " + ex.Message);
                 throw;
             }
+            return product;
         }
 
         public async Task<List<ProductViewModel>> GetAll()

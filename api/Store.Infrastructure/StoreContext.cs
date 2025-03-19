@@ -16,42 +16,46 @@ public partial class StoreContext : DbContext
     {
     }
 
-    public virtual DbSet<Cart> Carts { get; set; }
+    public virtual DbSet<CartProduct> CartProducts { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
 
     public virtual DbSet<WebUser> WebUsers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    { 
+    {
         optionsBuilder.UseSqlServer("Server=localhost,5433;Database=ShoppingCart;User Id=sa;Password=!Lolanimus;TrustServerCertificate=true");
-        optionsBuilder.UseLazyLoadingProxies();    
+        optionsBuilder.UseLazyLoadingProxies();
     }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Cart>(entity =>
+        modelBuilder.Entity<CartProduct>(entity =>
         {
             entity
                 .HasNoKey()
-                .ToTable("Cart");
+                .ToTable("CartProduct");
 
             entity.Property(e => e.ProductSize).HasMaxLength(2);
+            entity.Property(e => e.TimeStamp)
+                .IsRowVersion()
+                .IsConcurrencyToken();
+
+            entity.HasOne(d => d.WebUser).WithMany()
+                .HasForeignKey(d => d.Id)
+                .HasConstraintName("FK_CartProduct_WebUser");
 
             entity.HasOne(d => d.Product).WithMany()
                 .HasForeignKey(d => d.ProductId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_CartProduct_Product");
-
-            entity.HasOne(d => d.User).WithMany()
-                .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Cart_WebUser");
         });
 
         modelBuilder.Entity<Product>(entity =>
         {
             entity.ToTable("Product");
 
+            entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
             entity.Property(e => e.ProductDesc).HasMaxLength(1024);
             entity.Property(e => e.ProductGender).HasMaxLength(50);
             entity.Property(e => e.ProductImageUri).HasMaxLength(256);
@@ -64,10 +68,9 @@ public partial class StoreContext : DbContext
 
         modelBuilder.Entity<WebUser>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK_User");
-
             entity.ToTable("WebUser");
 
+            entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
             entity.Property(e => e.TimeStamp)
                 .IsRowVersion()
                 .IsConcurrencyToken();

@@ -24,7 +24,7 @@ namespace Store.Infrastracture.Repository
         }
         public async Task<List<T>> GetSome(Expression<Func<T, bool>> match)
         {
-            return await _db.Set<T>().Where(match).ToListAsync();
+            return await _db.Set<T>().Where(match).AsNoTracking().ToListAsync();
         }
         public async Task<T?> GetOne(Expression<Func<T, bool>> match)
         {
@@ -58,7 +58,7 @@ namespace Store.Infrastracture.Repository
             }
             return operationStatus;
         }
-        public async Task<int> Delete(int id)
+        public async Task<int> Delete(Guid id)
         {
             T? currentEntity = await GetOne(ent => ent.Id == id);
             _db.Set<T>().Remove(currentEntity!);

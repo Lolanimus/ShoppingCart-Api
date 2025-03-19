@@ -9,7 +9,7 @@ namespace Store.Models
 {
     public class StoreEntity
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Timestamp]
         public byte[]? TimeStamp { get; set; }

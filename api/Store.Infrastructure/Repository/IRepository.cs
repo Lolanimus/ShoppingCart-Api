@@ -8,6 +8,6 @@ namespace Store.UseCases.Interfaces.Repository
         Task<T?> GetOne(Expression<Func<T, bool>> match);
         Task<T> Add(T entity);
         Task<UpdateStatus> Update(T enity);
-        Task<int> Delete(int i);
+        Task<int> Delete(Guid i);
     }
 }
