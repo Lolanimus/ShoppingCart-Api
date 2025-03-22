@@ -1,5 +1,6 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using Store.Infrastracture.DAL;
+using Store.Infrastracture.Services.Cookies.CartProducts;
 using Store.Models;
 using System;
 using System.Collections.Generic;
@@ -11,16 +12,10 @@ namespace Store.Infrastracture.Services.UserInteractor
 {
     public class UserInteractor : GuestInteractor
     {
-        public override async Task<List<CartProduct>> GetCartByUserId(Guid? Id)
+        public UserInteractor(CartProductsService cartProductsService) : base(cartProductsService)
         {
-            List<CartProduct> cartProducts = await base.GetCartByUserId(Id);
-            if (cartProducts.IsNullOrEmpty())
-            {
-                // get cart redis cache, and if not null populate cookies with it
-                // else return 404
-            }
-            // put cartProducts into redis cache
-            return cartProducts;
         }
+
+
     }
 }

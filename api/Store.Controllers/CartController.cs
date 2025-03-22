@@ -3,6 +3,7 @@ using Castle.Components.DictionaryAdapter.Xml;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Store.Infrastracture.DTO;
 using Store.Infrastracture.Services.UserInteractor;
 using Store.Models;
 using Store.ViewModels;
@@ -20,25 +21,40 @@ namespace Store.Controllers
     [ApiController]
     public class CartController : Controller
     {
-        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IUserInteractor _userInteractor;
 
-        public CartController(IHttpContextAccessor httpContextAccessor)
+        public CartController(IUserInteractor userInteractor)
         {
-            _httpContextAccessor = httpContextAccessor;
-            _userInteractor = _httpContextAccessor.HttpContext.Request.Cookies["userInfo"].IsNullOrEmpty() 
-                ? new GuestInteractor(_httpContextAccessor) 
-                : new UserInteractor(_httpContextAccessor);
+            _userInteractor = userInteractor;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCartByUserId(Guid? id = null)
+        public IActionResult GetCart(Guid? id = null)
         {
             try
             {
-                CartViewModel prodVm = new CartViewModel(_userInteractor) { Id = id };
-                await prodVm.GetCartByUserId();
-                return Ok(prodVm);
+                CartViewModel cartVm = new CartViewModel(_userInteractor) { Id = id };
+                List<CartViewModel>? allCartVm = cartVm.GetCart();
+                //if(allCartVm.IsNullOrEmpty())
+                //    return NotFound();
+                return Ok(allCartVm);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Problem in " + GetType().Name + " " +
+                MethodBase.GetCurrentMethod()!.Name + " " + ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError); // something went wrong
+            }
+        }
+
+        [HttpPost]
+        public IActionResult AddToCart(CartProductDTO cartDTO)
+        {
+            try
+            {
+                CartViewModel cart = CartViewModel.FromDto(cartDTO, _userInteractor);
+                cart.AddCartProduct();
+                return cart.Quantity > 0 ? Ok(cart) : BadRequest();
             }
             catch (Exception ex)
             {

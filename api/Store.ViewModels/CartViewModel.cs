@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.IdentityModel.Tokens;
 using Store.Infrastracture.DAL;
+using Store.Infrastracture.DTO;
 using Store.Infrastracture.Services.UserInteractor;
 using Store.Models;
 using System;
@@ -8,13 +10,14 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Store.ViewModels
 {
     public class CartViewModel
     {
-        private readonly IUserInteractor _userInteractor;
+        private IUserInteractor _userInteractor;
 
         public Guid? Id { get; set; }
 
@@ -26,30 +29,45 @@ namespace Store.ViewModels
 
         public string? TimeStamp { get; set; }
 
-        public virtual Product Product { get; set; } = null!;
+        public virtual Product? Product { get; set; } = null!;
 
-        public virtual WebUser User { get; set; } = null!;
+        public virtual WebUser? User { get; set; } = null!;
 
         public CartViewModel(IUserInteractor userInteractor)
         {
             _userInteractor = userInteractor;
         }
 
-        public async Task<List<CartViewModel>> GetCartByUserId()
+        public static CartViewModel FromDto(CartProductDTO dto, IUserInteractor userInteractor)
+        {
+            return new CartViewModel(userInteractor)
+            {
+                Id = dto.Id,
+                ProductId = dto.ProductId,
+                ProductSize = dto.ProductSize,
+                Quantity = dto.Quantity,
+                TimeStamp = dto.TimeStamp
+            };
+        }
+
+        public List<CartViewModel>? GetCart()
         {
             List<CartViewModel> allVms = new();
             try
             {
-                List<CartProduct> allCartProducts = await _userInteractor.GetCartByUserId(Id);
-                foreach (CartProduct cartProduct in allCartProducts)
+                List<CartProduct>? allCartProducts = _userInteractor.GetCartProducts();
+
+                if (allCartProducts.IsNullOrEmpty())
+                    return null;
+
+                foreach (CartProduct? cartProduct in allCartProducts)
                 {
-                    CartViewModel cartVm = new(_userInteractor)
+                    CartViewModel? cartVm = new(_userInteractor)
                     {
                         Id = cartProduct.Id,
                         ProductId = cartProduct.ProductId,
                         ProductSize = cartProduct.ProductSize,
                         Quantity = cartProduct.Quantity,
-                        TimeStamp = Convert.ToBase64String(cartProduct.TimeStamp!)
                     };
                     allVms.Add(cartVm);
                 }
@@ -64,37 +82,26 @@ namespace Store.ViewModels
             return allVms;
         }
 
-        //public async Task<List<CartViewModel>> GetCartByUserIdWithProducts()
-        //{
-        //    List<CartViewModel> allVms = new();
-        //    try
-        //    {
-        //        List<CartProduct> allCartProducts = await dao.GetCartByUserIdWithProducts(Id);
-        //        // we need to convert Student instance to StudentViewModel because
-        //        // the Web Layer isn't aware of the Domain class Student
-        //        foreach (CartProduct cartProduct in allCartProducts)
-        //        {
-        //            CartViewModel cartVm = new(_userInteractor)
-        //            {
-        //                Id = cartProduct.Id,
-        //                ProductId = cartProduct.ProductId,
-        //                ProductSize = cartProduct.ProductSize,
-        //                Quantity = cartProduct.Quantity,
-        //                Product = cartProduct.Product,
-        //                // binary value needs to be stored on client as base64
-        //                TimeStamp = Convert.ToBase64String(cartProduct.TimeStamp!)
-        //            };
-        //            allVms.Add(cartVm);
-        //        }
+        public void AddCartProduct()
+        {
+            try
+            {
+                CartProduct? cartProduct = new CartProduct()
+                {
+                    Id = Id,
+                    ProductId = ProductId,
+                    ProductSize = ProductSize,
+                    Quantity = Quantity,
+                };
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Debug.WriteLine("Problem in " + GetType().Name + " " +
-        //        MethodBase.GetCurrentMethod()!.Name + " " + ex.Message);
-        //        throw;
-        //    }
-        //    return allVms;
-        //}
+                _userInteractor.AddCartProduct(cartProduct);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Problem in " + GetType().Name + " " +
+                MethodBase.GetCurrentMethod()!.Name + " " + ex.Message);
+                throw;
+            }
+        }
     }
 }

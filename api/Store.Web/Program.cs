@@ -1,12 +1,31 @@
 //using StackExchange.Redis;
 
+using Store.Infrastracture.Services.Authentication;
+using Store.Infrastracture.Services.Cookies;
+using Store.Infrastracture.Services.Cookies.CartProducts;
+using Store.Infrastracture.Services.Cookies.Token;
+using Store.Infrastracture.Services.UserInteractor;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<CookiesService>();
+builder.Services.AddScoped<CartProductsService>();
+builder.Services.AddScoped<TokenService>();
+builder.Services.AddScoped<AuthenticationService>();
+builder.Services.AddScoped<IUserInteractor>(serviceProvider =>
+{
+    var authService = serviceProvider.GetRequiredService<AuthenticationService>();
+    var cartProductService = serviceProvider.GetRequiredService<CartProductsService>();
+
+    return authService.IsUserLoggedIn() 
+        ? new UserInteractor(cartProductService) 
+        : new GuestInteractor(cartProductService);
+});
 
 var redisConnectionString = Environment.GetEnvironmentVariable("REDIS_CONNECTION_STRING");
 
