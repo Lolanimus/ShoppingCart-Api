@@ -25,15 +25,15 @@ namespace Store.Infrastracture.Services.UserInteractor
             return _cartProductsService.GetCartProducts();
         }
 
-        virtual public CartProduct GetCartProduct(Guid productId)
+        virtual public CartProduct GetCartProduct(Guid productId, ProductSize size)
         {
             var cartProducts = GetCartProducts();
-            return cartProducts.Find(prod => prod.ProductId == productId)!;
+            return cartProducts!.Find(prod => prod.ProductId == productId && prod.ProductSize == size)!;
         }
 
-        virtual public int DeleteCartProduct(Guid productId)
+        virtual public int DeleteCartProduct(Guid productId, ProductSize size)
         {
-            return _cartProductsService.DeleteCartProduct(GetCartProduct(productId));
+            return _cartProductsService.DeleteCartProduct(GetCartProduct(productId, size));
         }
 
         virtual public void AddCartProduct(CartProduct cartProduct)

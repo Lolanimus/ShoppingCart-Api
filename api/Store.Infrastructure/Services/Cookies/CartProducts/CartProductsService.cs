@@ -31,7 +31,7 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
             if (previousJsonCookies.IsNullOrEmpty())
                 return new Cookie();
 
-            Cookie? previousCookies = JsonSerializer.Deserialize<Cookie>(previousJsonCookies!);
+            Cookie? previousCookies = JsonSerializer.Deserialize<Cookie>(previousJsonCookies!, DeserializerOptions.opts);
     
             return previousCookies!;
         }
@@ -43,7 +43,7 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
             if (cookies.IsNullOrEmpty())
                 return null;
 
-            Cookie? cartProducts = JsonSerializer.Deserialize<Cookie>(cookies!);
+            Cookie? cartProducts = JsonSerializer.Deserialize<Cookie>(cookies!, DeserializerOptions.opts);
 
             return cartProducts!.CartProducts;
         }
@@ -52,7 +52,7 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
         {
             var prevCookies = GetPreviousCookies();
             prevCookies!.CartProducts = cartProducts;
-            string? updatedJsonCookies = JsonSerializer.Serialize(prevCookies);
+            string? updatedJsonCookies = JsonSerializer.Serialize(prevCookies, DeserializerOptions.opts);
 
             _cookiesService.UpdateCookies(updatedJsonCookies);
         }
@@ -64,7 +64,7 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
             CartProduct prodToRemove = prevCartProducts.FirstOrDefault(prod => prod.Id == cartProduct.Id)!;
             prevCartProducts!.Remove(prodToRemove);
             prevCookie.CartProducts = prevCartProducts;
-            string prevJsonCookie = JsonSerializer.Serialize(prevCookie);
+            string prevJsonCookie = JsonSerializer.Serialize(prevCookie, DeserializerOptions.opts);
 
             _cookiesService.UpdateCookies(prevJsonCookie);
 
@@ -80,7 +80,7 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
             var prevCartProducts = prevCookie.CartProducts;
             prevCartProducts!.Add(cartProduct);
             prevCookie.CartProducts = prevCartProducts;
-            string prevJsonCookie = JsonSerializer.Serialize(prevCookie);
+            string prevJsonCookie = JsonSerializer.Serialize(prevCookie, DeserializerOptions.opts);
 
             _cookiesService.UpdateCookies(prevJsonCookie);
         }

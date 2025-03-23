@@ -7,7 +7,7 @@ public class CartProduct : StoreEntity
 {
     public int Quantity { get; set; }
 
-    public string? ProductSize { get; set; }
+    public ProductSize ProductSize { get; set; }
 
     public new Guid? Id { get; set; }
 

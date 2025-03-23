@@ -2,6 +2,8 @@
 using Microsoft.IdentityModel.Tokens;
 using Store.Infrastracture.DAL;
 using Store.Infrastracture.DTO;
+using Store.Infrastracture.Helpers.PrdouctSizeConverter;
+using Store.Infrastracture.Services.Cookies;
 using Store.Infrastracture.Services.UserInteractor;
 using Store.Models;
 using System;
@@ -44,7 +46,7 @@ namespace Store.ViewModels
             {
                 Id = dto.Id,
                 ProductId = dto.ProductId,
-                ProductSize = dto.ProductSize,
+                ProductSize = ProductSizeConverter.FromEnum(dto.ProductSize),
                 Quantity = dto.Quantity,
                 TimeStamp = dto.TimeStamp
             };
@@ -66,7 +68,7 @@ namespace Store.ViewModels
                     {
                         Id = cartProduct.Id,
                         ProductId = cartProduct.ProductId,
-                        ProductSize = cartProduct.ProductSize,
+                        ProductSize = ProductSizeConverter.FromEnum(cartProduct.ProductSize),
                         Quantity = cartProduct.Quantity,
                     };
                     allVms.Add(cartVm);
@@ -90,7 +92,7 @@ namespace Store.ViewModels
                 {
                     Id = Id,
                     ProductId = ProductId,
-                    ProductSize = ProductSize,
+                    ProductSize = ProductSizeConverter.ToEnum(ProductSize!),
                     Quantity = Quantity,
                 };
 
@@ -108,7 +110,7 @@ namespace Store.ViewModels
         {
             try
             {
-                return _userInteractor.DeleteCartProduct(ProductId);
+                return _userInteractor.DeleteCartProduct(ProductId, ProductSizeConverter.ToEnum(ProductSize!));
             }
             catch (Exception ex)
             {

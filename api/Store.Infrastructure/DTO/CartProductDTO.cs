@@ -1,8 +1,10 @@
-﻿using Store.Models;
+﻿using Store.Infrastracture.Helpers.PrdouctSizeConverter;
+using Store.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Store.Infrastracture.DTO
@@ -15,7 +17,8 @@ namespace Store.Infrastracture.DTO
 
         public int Quantity { get; set; }
 
-        public string? ProductSize { get; set; }
+        [JsonConverter(typeof(JsonProductSizeConverter))]
+        public ProductSize ProductSize { get; set; }
 
         public string? TimeStamp { get; set; }
 

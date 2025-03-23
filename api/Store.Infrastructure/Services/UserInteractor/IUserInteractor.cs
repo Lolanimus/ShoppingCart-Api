@@ -9,11 +9,11 @@ namespace Store.Infrastracture.Services.UserInteractor
 {
     public interface IUserInteractor
     {
-        List<CartProduct> GetCartProducts();
+        List<CartProduct>? GetCartProducts();
 
-        CartProduct GetCartProduct(Guid productId);
+        CartProduct GetCartProduct(Guid productId, ProductSize size);
 
-        int DeleteCartProduct(Guid productId);
+        int DeleteCartProduct(Guid productId, ProductSize size);
 
         void AddCartProduct(CartProduct cartProduct);
 

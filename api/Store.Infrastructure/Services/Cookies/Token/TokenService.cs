@@ -21,7 +21,7 @@ namespace Store.Infrastracture.Services.Cookies.Token
         public Cookie GetPreviousCookies()
         {
             string? previousJsonCookies = _cookiesService.GetCookies();
-            Cookie? previousCookies = JsonSerializer.Deserialize<Cookie>(previousJsonCookies!);
+            Cookie? previousCookies = JsonSerializer.Deserialize<Cookie>(previousJsonCookies!, DeserializerOptions.opts);
 
             return previousCookies!;
         }
@@ -33,7 +33,7 @@ namespace Store.Infrastracture.Services.Cookies.Token
             if(jsonCookies.IsNullOrEmpty())
                 return null;
 
-            return JsonSerializer.Deserialize<Cookie>(jsonCookies).JwtToken;
+            return JsonSerializer.Deserialize<Cookie>(jsonCookies!, DeserializerOptions.opts)!.JwtToken;
         }
 
         public void DeleteJtwToken()
