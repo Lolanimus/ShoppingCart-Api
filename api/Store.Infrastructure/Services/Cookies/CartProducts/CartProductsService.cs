@@ -20,6 +20,11 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
             _cookiesService = cookiesService;
         }
 
+        public void ClearCookies()
+        {
+            _cookiesService.ClearCookies();
+        }
+
         public Cookie? GetPreviousCookies()
         {
             string? previousJsonCookies = _cookiesService.GetCookies();
@@ -52,16 +57,21 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
             _cookiesService.UpdateCookies(updatedJsonCookies);
         }
 
-        public void DeleteCartProducts(CartProduct cartProduct)
+        public int DeleteCartProduct(CartProduct cartProduct)
         {
-            var prevCookie = GetPreviousCookies();
-            var prevCartProducts = prevCookie.CartProducts;
-            var prodToRemove = (CartProduct)prevCartProducts!.Where(prod => prod.Id == cartProduct.Id);
+            var prevCookie = GetPreviousCookies()!;
+            var prevCartProducts = prevCookie.CartProducts!;
+            CartProduct prodToRemove = prevCartProducts.FirstOrDefault(prod => prod.Id == cartProduct.Id)!;
             prevCartProducts!.Remove(prodToRemove);
             prevCookie.CartProducts = prevCartProducts;
             string prevJsonCookie = JsonSerializer.Serialize(prevCookie);
 
             _cookiesService.UpdateCookies(prevJsonCookie);
+
+            if (!prevCookie.CartProducts!.Any(prod => prod.ProductId == cartProduct.ProductId))
+                return 1;
+            else
+                return -1;
         }
 
         public void AddCartProduct(CartProduct cartProduct)
@@ -75,9 +85,9 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
             _cookiesService.UpdateCookies(prevJsonCookie);
         }
 
-        public void UpdatedCartProduct(CartProduct cartProduct)
+        public void UpdateCartProduct(CartProduct cartProduct)
         {
-            DeleteCartProducts(cartProduct);
+            DeleteCartProduct(cartProduct);
             AddCartProduct(cartProduct);
         }
     }

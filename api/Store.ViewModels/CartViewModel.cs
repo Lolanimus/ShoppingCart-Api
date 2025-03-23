@@ -103,5 +103,34 @@ namespace Store.ViewModels
                 throw;
             }
         }
+
+        public int DeleteCartProduct()
+        {
+            try
+            {
+                return _userInteractor.DeleteCartProduct(ProductId);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Problem in " + GetType().Name + " " +
+                MethodBase.GetCurrentMethod()!.Name + " " + ex.Message);
+                throw;
+            }
+        }
+
+        public void ClearCookies()
+        {
+            try
+            {
+                _userInteractor.ClearCookies();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Problem in " + GetType().Name + " " +
+                MethodBase.GetCurrentMethod()!.Name + " " + ex.Message);
+                throw;
+            }
+
+        }
     }
 }

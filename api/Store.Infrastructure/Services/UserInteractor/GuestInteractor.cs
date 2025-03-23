@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.IdentityModel.Tokens;
 using Store.Infrastracture.DAL;
 using Store.Infrastracture.Services.Cookies.CartProducts;
 using Store.Models;
@@ -17,32 +18,47 @@ namespace Store.Infrastracture.Services.UserInteractor
         public GuestInteractor(CartProductsService cartProductsService)
         {
             _cartProductsService = cartProductsService;
-        }
+        }        
 
         virtual public List<CartProduct>? GetCartProducts()
         {
             return _cartProductsService.GetCartProducts();
         }
 
-        virtual public CartProduct GetCartProduct(Guid id)
+        virtual public CartProduct GetCartProduct(Guid productId)
         {
             var cartProducts = GetCartProducts();
-            return cartProducts.Find(prod => prod.Id == id)!;
+            return cartProducts.Find(prod => prod.ProductId == productId)!;
         }
 
-        virtual public void DeleteCartProduct(Guid id)
+        virtual public int DeleteCartProduct(Guid productId)
         {
-            _cartProductsService.DeleteCartProducts(GetCartProduct(id));
+            return _cartProductsService.DeleteCartProduct(GetCartProduct(productId));
         }
 
-        public void AddCartProduct(CartProduct cartProduct)
+        virtual public void AddCartProduct(CartProduct cartProduct)
         {
+            var cartProducts = _cartProductsService.GetCartProducts()!;
+            if (!cartProducts.IsNullOrEmpty())
+            {
+                if (cartProducts.Exists(prod => prod.ProductId == cartProduct.ProductId && prod.ProductSize == cartProduct.ProductSize))
+                {
+                    cartProducts.First(prod => prod.ProductId == cartProduct.ProductId).Quantity++;
+                    _cartProductsService.SetCartProducts(cartProducts);
+                    return;
+                }
+            }
             _cartProductsService.AddCartProduct(cartProduct);
         }
 
-        public void UpdateCartProduct(CartProduct product)
+        virtual public void UpdateCartProduct(CartProduct product)
         {
-            _cartProductsService.UpdatedCartProduct(product);
+            _cartProductsService.UpdateCartProduct(product);
+        }
+
+        virtual public void ClearCookies()
+        {
+            _cartProductsService.ClearCookies();
         }
     }
 }

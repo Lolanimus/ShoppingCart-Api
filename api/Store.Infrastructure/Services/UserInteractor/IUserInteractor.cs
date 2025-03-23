@@ -11,12 +11,14 @@ namespace Store.Infrastracture.Services.UserInteractor
     {
         List<CartProduct> GetCartProducts();
 
-        CartProduct GetCartProduct(Guid id);
+        CartProduct GetCartProduct(Guid productId);
 
-        void DeleteCartProduct(Guid id);
+        int DeleteCartProduct(Guid productId);
 
         void AddCartProduct(CartProduct cartProduct);
 
         void UpdateCartProduct(CartProduct cartProduct);
+
+        void ClearCookies();
     }
 }

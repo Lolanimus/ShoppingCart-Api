@@ -47,7 +47,7 @@ namespace Store.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("add")]
         public IActionResult AddToCart(CartProductDTO cartDTO)
         {
             try
@@ -55,6 +55,38 @@ namespace Store.Controllers
                 CartViewModel cart = CartViewModel.FromDto(cartDTO, _userInteractor);
                 cart.AddCartProduct();
                 return cart.Quantity > 0 ? Ok(cart) : BadRequest();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Problem in " + GetType().Name + " " +
+                MethodBase.GetCurrentMethod()!.Name + " " + ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError); // something went wrong
+            }
+        }
+
+        [HttpDelete("{productId}")]
+        public IActionResult DeleteCartProduct(Guid productId)
+        {
+            try
+            {
+                CartViewModel cart = new CartViewModel(_userInteractor) { ProductId = productId };
+                return cart.DeleteCartProduct() == 1 ? Ok(cart) : BadRequest();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Problem in " + GetType().Name + " " +
+                MethodBase.GetCurrentMethod()!.Name + " " + ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError); // something went wrong
+            }
+        }
+
+        [HttpDelete]
+        public IActionResult ClearCookies()
+        {
+            try
+            {
+                _userInteractor.ClearCookies();
+                return Ok();
             }
             catch (Exception ex)
             {
