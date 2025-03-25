@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
 using Store.Infrastracture.DAL;
+using Store.Infrastracture.Helpers;
 using Store.Infrastracture.Services.Cookies.CartProducts;
 using Store.Models;
 using System;
@@ -36,8 +37,11 @@ namespace Store.Infrastracture.Services.UserInteractor
             return _cartProductsService.DeleteCartProduct(GetCartProduct(productId, size));
         }
 
-        virtual public void AddCartProduct(CartProduct cartProduct)
+        virtual public int AddCartProduct(CartProduct cartProduct)
         {
+            if (!Helper.ClothesHasSize(cartProduct))
+                return 0;
+
             var cartProducts = _cartProductsService.GetCartProducts()!;
             if (!cartProducts.IsNullOrEmpty())
             {
@@ -45,10 +49,12 @@ namespace Store.Infrastracture.Services.UserInteractor
                 {
                     cartProducts.First(prod => prod.ProductId == cartProduct.ProductId).Quantity++;
                     _cartProductsService.SetCartProducts(cartProducts);
-                    return;
+                    return 1;
                 }
             }
+
             _cartProductsService.AddCartProduct(cartProduct);
+            return 1;
         }
 
         virtual public void UpdateCartProduct(CartProduct product)

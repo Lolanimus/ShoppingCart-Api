@@ -30,27 +30,6 @@ public partial class StoreContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<CartProduct>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToTable("CartProduct");
-
-            entity.Property(e => e.ProductSize).HasMaxLength(2);
-            entity.Property(e => e.TimeStamp)
-                .IsRowVersion()
-                .IsConcurrencyToken();
-
-            entity.HasOne(d => d.WebUser).WithMany()
-                .HasForeignKey(d => d.Id)
-                .HasConstraintName("FK_CartProduct_WebUser");
-
-            entity.HasOne(d => d.Product).WithMany()
-                .HasForeignKey(d => d.ProductId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_CartProduct_Product");
-        });
-
         modelBuilder.Entity<Product>(entity =>
         {
             entity.ToTable("Product");

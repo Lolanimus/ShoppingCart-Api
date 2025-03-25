@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Store.Infrastracture.Helpers.PrdouctSizeConverter
 {
-    public static class ProductSizeConverter
+    public class ProductSizeConverter
     {
-        public static string FromEnum(ProductSize value)
+        public string FromEnum(ProductSize value)
         {
             return value switch
             {
@@ -22,7 +22,7 @@ namespace Store.Infrastracture.Helpers.PrdouctSizeConverter
             };
         }
 
-        public static ProductSize ToEnum(string value)
+        public ProductSize ToEnum(string value)
         {
             return value switch
             {

@@ -15,12 +15,10 @@ namespace Store.Infrastracture.DTO
 
         public Guid ProductId { get; set; }
 
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         [JsonConverter(typeof(JsonProductSizeConverter))]
         public ProductSize ProductSize { get; set; }
-
-        public string? TimeStamp { get; set; }
 
         public virtual Product? Product { get; set; } = null!;
 

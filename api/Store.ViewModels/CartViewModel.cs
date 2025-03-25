@@ -2,6 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using Store.Infrastracture.DAL;
 using Store.Infrastracture.DTO;
+using Store.Infrastracture.Helpers;
 using Store.Infrastracture.Helpers.PrdouctSizeConverter;
 using Store.Infrastracture.Services.Cookies;
 using Store.Infrastracture.Services.UserInteractor;
@@ -25,11 +26,9 @@ namespace Store.ViewModels
 
         public Guid ProductId { get; set; }
 
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         public string? ProductSize { get; set; }
-
-        public string? TimeStamp { get; set; }
 
         public virtual Product? Product { get; set; } = null!;
 
@@ -46,9 +45,8 @@ namespace Store.ViewModels
             {
                 Id = dto.Id,
                 ProductId = dto.ProductId,
-                ProductSize = ProductSizeConverter.FromEnum(dto.ProductSize),
-                Quantity = dto.Quantity,
-                TimeStamp = dto.TimeStamp
+                ProductSize = Helper.sizeConverter.FromEnum(dto.ProductSize),
+                Quantity = dto.Quantity
             };
         }
 
@@ -68,7 +66,7 @@ namespace Store.ViewModels
                     {
                         Id = cartProduct.Id,
                         ProductId = cartProduct.ProductId,
-                        ProductSize = ProductSizeConverter.FromEnum(cartProduct.ProductSize),
+                        ProductSize = Helper.sizeConverter.FromEnum(cartProduct.ProductSize),
                         Quantity = cartProduct.Quantity,
                     };
                     allVms.Add(cartVm);
@@ -84,7 +82,7 @@ namespace Store.ViewModels
             return allVms;
         }
 
-        public void AddCartProduct()
+        public int AddCartProduct()
         {
             try
             {
@@ -92,11 +90,11 @@ namespace Store.ViewModels
                 {
                     Id = Id,
                     ProductId = ProductId,
-                    ProductSize = ProductSizeConverter.ToEnum(ProductSize!),
-                    Quantity = Quantity,
+                    ProductSize = Helper.sizeConverter.ToEnum(ProductSize!),
+                    Quantity = Quantity ?? 1,
                 };
 
-                _userInteractor.AddCartProduct(cartProduct);
+                return _userInteractor.AddCartProduct(cartProduct);
             }
             catch (Exception ex)
             {
@@ -110,7 +108,7 @@ namespace Store.ViewModels
         {
             try
             {
-                return _userInteractor.DeleteCartProduct(ProductId, ProductSizeConverter.ToEnum(ProductSize!));
+                return _userInteractor.DeleteCartProduct(ProductId, Helper.sizeConverter.ToEnum(ProductSize!));
             }
             catch (Exception ex)
             {

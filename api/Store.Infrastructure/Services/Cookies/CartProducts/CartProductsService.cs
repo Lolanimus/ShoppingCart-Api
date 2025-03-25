@@ -52,7 +52,7 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
         {
             var prevCookies = GetPreviousCookies();
             prevCookies!.CartProducts = cartProducts;
-            string? updatedJsonCookies = JsonSerializer.Serialize(prevCookies, DeserializerOptions.opts);
+            string? updatedJsonCookies = JsonSerializer.Serialize(prevCookies);
 
             _cookiesService.UpdateCookies(updatedJsonCookies);
         }
@@ -62,9 +62,19 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
             var prevCookie = GetPreviousCookies()!;
             var prevCartProducts = prevCookie.CartProducts!;
             CartProduct prodToRemove = prevCartProducts.FirstOrDefault(prod => prod.Id == cartProduct.Id)!;
+            if(prodToRemove.ProductSize == cartProduct.ProductSize && prodToRemove.Quantity > 1)
+            {
+                prevCartProducts.First(
+                    prod => prod.ProductId == prodToRemove.ProductId 
+                         && prod.ProductSize == prodToRemove.ProductSize
+                ).Quantity--;
+                _cookiesService.SetCookies(JsonSerializer.Serialize(prevCartProducts));
+                return 1;
+            }
+
             prevCartProducts!.Remove(prodToRemove);
             prevCookie.CartProducts = prevCartProducts;
-            string prevJsonCookie = JsonSerializer.Serialize(prevCookie, DeserializerOptions.opts);
+            string prevJsonCookie = JsonSerializer.Serialize(prevCookie);
 
             _cookiesService.UpdateCookies(prevJsonCookie);
 
@@ -80,7 +90,7 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
             var prevCartProducts = prevCookie.CartProducts;
             prevCartProducts!.Add(cartProduct);
             prevCookie.CartProducts = prevCartProducts;
-            string prevJsonCookie = JsonSerializer.Serialize(prevCookie, DeserializerOptions.opts);
+            string prevJsonCookie = JsonSerializer.Serialize(prevCookie);
 
             _cookiesService.UpdateCookies(prevJsonCookie);
         }

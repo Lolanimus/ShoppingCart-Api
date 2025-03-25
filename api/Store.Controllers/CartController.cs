@@ -10,6 +10,7 @@ using Store.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -53,8 +54,7 @@ namespace Store.Controllers
             try
             {
                 CartViewModel cart = CartViewModel.FromDto(cartDTO, _userInteractor);
-                cart.AddCartProduct();
-                return cart.Quantity > 0 ? Ok(cart) : BadRequest();
+                return cart.AddCartProduct() == 1 ? Ok(cart) : BadRequest();
             }
             catch (Exception ex)
             {
@@ -65,11 +65,11 @@ namespace Store.Controllers
         }
 
         [HttpDelete("{productId}")]
-        public IActionResult DeleteCartProduct(Guid productId)
+        public IActionResult DeleteCartProduct(Guid productId, string? size = null)
         {
             try
             {
-                CartViewModel cart = new CartViewModel(_userInteractor) { ProductId = productId };
+                CartViewModel cart = new CartViewModel(_userInteractor) { ProductId = productId, ProductSize = size };
                 return cart.DeleteCartProduct() == 1 ? Ok(cart) : BadRequest();
             }
             catch (Exception ex)

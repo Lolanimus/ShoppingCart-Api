@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace Store.Models;
 
-public class CartProduct : StoreEntity
+public class CartProduct
 {
     public int Quantity { get; set; }
 
     public ProductSize ProductSize { get; set; }
 
-    public new Guid? Id { get; set; }
+    public Guid? Id { get; set; }
 
     public Guid ProductId { get; set; }
 

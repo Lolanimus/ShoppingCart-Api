@@ -15,7 +15,7 @@ namespace Store.Infrastracture.Services.UserInteractor
 
         int DeleteCartProduct(Guid productId, ProductSize size);
 
-        void AddCartProduct(CartProduct cartProduct);
+        int AddCartProduct(CartProduct cartProduct);
 
         void UpdateCartProduct(CartProduct cartProduct);
 
