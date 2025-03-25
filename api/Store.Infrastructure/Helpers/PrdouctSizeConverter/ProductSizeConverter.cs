@@ -22,6 +22,18 @@ namespace Store.Infrastracture.Helpers.PrdouctSizeConverter
             };
         }
 
+        public int FromStrToInt(string value)
+        {
+            return value switch
+            {
+                "s" => 1,
+                "m" => 2,
+                "l" => 3,
+                "xl" => 4,
+                _ => 0
+            };
+        }
+
         public string FromEnum(ProductSize value)
         {
             return value switch

@@ -46,7 +46,8 @@ namespace Store.ViewModels
                 Id = dto.Id,
                 ProductId = dto.ProductId,
                 ProductSize = Helper.sizeConverter.FromEnum(dto.ProductSize),
-                Quantity = dto.Quantity
+                Quantity = dto.Quantity,
+                Product = dto.Product
             };
         }
 
@@ -68,6 +69,7 @@ namespace Store.ViewModels
                         ProductId = cartProduct.ProductId,
                         ProductSize = Helper.sizeConverter.FromEnum(cartProduct.ProductSize),
                         Quantity = cartProduct.Quantity,
+                        Product = cartProduct.Product
                     };
                     allVms.Add(cartVm);
                 }
@@ -92,6 +94,7 @@ namespace Store.ViewModels
                     ProductId = ProductId,
                     ProductSize = Helper.sizeConverter.ToEnum(ProductSize!),
                     Quantity = Quantity ?? 1,
+                    Product = Product
                 };
 
                 return await _userInteractor.AddCartProduct(cartProduct);
