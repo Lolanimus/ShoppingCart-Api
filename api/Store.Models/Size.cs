@@ -8,10 +8,10 @@ namespace Store.Models
 {
     public enum ProductSize
     {
+        Unknown,
         S,
         M,
         L,
-        XL,
-        Unknown
+        XL
     }
 }

@@ -30,14 +30,14 @@ namespace Store.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetCart(Guid? id = null)
+        public async Task<IActionResult> GetCart(Guid? id = null)
         {
             try
             {
                 CartViewModel cartVm = new CartViewModel(_userInteractor) { Id = id };
-                List<CartViewModel>? allCartVm = cartVm.GetCart();
-                //if(allCartVm.IsNullOrEmpty())
-                //    return NotFound();
+                List<CartViewModel>? allCartVm = await cartVm.GetCart()!;
+                if (allCartVm.IsNullOrEmpty())
+                    return NotFound();
                 return Ok(allCartVm);
             }
             catch (Exception ex)
@@ -49,12 +49,12 @@ namespace Store.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult AddToCart(CartProductDTO cartDTO)
+        public async Task<IActionResult> AddToCart(CartProductDTO cartDTO)
         {
             try
             {
                 CartViewModel cart = CartViewModel.FromDto(cartDTO, _userInteractor);
-                return cart.AddCartProduct() == 1 ? Ok(cart) : BadRequest();
+                return await cart.AddCartProduct() == 1 ? Ok(cart) : BadRequest();
             }
             catch (Exception ex)
             {
@@ -65,12 +65,12 @@ namespace Store.Controllers
         }
 
         [HttpDelete("{productId}")]
-        public IActionResult DeleteCartProduct(Guid productId, string? size = null)
+        public async Task<IActionResult> DeleteCartProduct(Guid productId, string? size = null)
         {
             try
             {
                 CartViewModel cart = new CartViewModel(_userInteractor) { ProductId = productId, ProductSize = size };
-                return cart.DeleteCartProduct() == 1 ? Ok(cart) : BadRequest();
+                return await cart.DeleteCartProduct() == 1 ? Ok(cart) : NotFound();
             }
             catch (Exception ex)
             {

@@ -9,13 +9,13 @@ namespace Store.Infrastracture.Services.UserInteractor
 {
     public interface IUserInteractor
     {
-        List<CartProduct>? GetCartProducts();
+        Task<List<CartProduct>>? GetCartProducts();
 
-        CartProduct GetCartProduct(Guid productId, ProductSize size);
+        Task<CartProduct> GetCartProduct(Guid productId, ProductSize size);
 
-        int DeleteCartProduct(Guid productId, ProductSize size);
+        Task<int> DeleteCartProduct(Guid productId, ProductSize size);
 
-        int AddCartProduct(CartProduct cartProduct);
+        Task<int> AddCartProduct(CartProduct cartProduct);
 
         void UpdateCartProduct(CartProduct cartProduct);
 

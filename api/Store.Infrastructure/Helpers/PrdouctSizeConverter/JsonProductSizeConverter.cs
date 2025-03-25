@@ -14,13 +14,7 @@ namespace Store.Infrastracture.Helpers.PrdouctSizeConverter
     {
         public override ProductSize Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.TokenType != JsonTokenType.String)
-            {
-                return ProductSize.Unknown;
-            }
-            string? value = reader.GetString()?.ToLower();
-
-            return Helper.sizeConverter.ToEnum(value!);
+            return Helper.sizeConverter.ToEnum(Helper.sizeConverter.FromIntToStr(reader.GetInt32()));
         }
 
         public override void Write(Utf8JsonWriter writer, ProductSize value, JsonSerializerOptions options)

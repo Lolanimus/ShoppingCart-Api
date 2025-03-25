@@ -10,6 +10,18 @@ namespace Store.Infrastracture.Helpers.PrdouctSizeConverter
 {
     public class ProductSizeConverter
     {
+        public string FromIntToStr(int value)
+        {
+            return value switch
+            {
+                0 => "unknown",
+                1 => "s",
+                2 => "m",
+                3 => "l",
+                4 => "xl"
+            };
+        }
+
         public string FromEnum(ProductSize value)
         {
             return value switch

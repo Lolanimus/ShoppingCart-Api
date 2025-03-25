@@ -15,34 +15,53 @@ namespace Store.Infrastracture.Services.UserInteractor
     public class GuestInteractor : IUserInteractor
     {
         private readonly CartProductsService _cartProductsService;
+        private readonly ProductDAO _productDAO;
 
         public GuestInteractor(CartProductsService cartProductsService)
         {
             _cartProductsService = cartProductsService;
-        }        
-
-        virtual public List<CartProduct>? GetCartProducts()
+            _productDAO = new ProductDAO();
+        }
+        virtual public async Task<CartProduct> IncludeProductAndUserInfo(CartProduct cartProduct)
         {
-            return _cartProductsService.GetCartProducts();
+            var prod = await _productDAO.GetById(cartProduct.ProductId);
+            cartProduct.Product = prod;
+            // TODO: user info 
+            return cartProduct;
         }
 
-        virtual public CartProduct GetCartProduct(Guid productId, ProductSize size)
+        virtual public async Task<List<CartProduct>>? GetCartProducts()
         {
-            var cartProducts = GetCartProducts();
+            var cartProducts = _cartProductsService.GetCartProducts();
+            List<CartProduct> cartProductsToReturn = new List<CartProduct>();
+            if (cartProducts.IsNullOrEmpty())
+                return null!;
+
+            foreach (CartProduct? cartProd in cartProducts!)
+            {
+                cartProductsToReturn.Add(await IncludeProductAndUserInfo(cartProd));
+            }
+
+            return cartProductsToReturn;
+        }
+
+        virtual public async Task<CartProduct> GetCartProduct(Guid productId, ProductSize size)
+        {
+            var cartProducts = await GetCartProducts()!;
             return cartProducts!.Find(prod => prod.ProductId == productId && prod.ProductSize == size)!;
         }
 
-        virtual public int DeleteCartProduct(Guid productId, ProductSize size)
+        virtual public async Task<int> DeleteCartProduct(Guid productId, ProductSize size)
         {
-            return _cartProductsService.DeleteCartProduct(GetCartProduct(productId, size));
+            return _cartProductsService.DeleteCartProduct(await GetCartProduct(productId, size));
         }
 
-        virtual public int AddCartProduct(CartProduct cartProduct)
+        virtual public async Task<int> AddCartProduct(CartProduct cartProduct)
         {
-            if (!Helper.ClothesHasSize(cartProduct))
+            if (!Helper.ClothesHasSize(await IncludeProductAndUserInfo(cartProduct)))
                 return 0;
 
-            var cartProducts = _cartProductsService.GetCartProducts()!;
+            var cartProducts = await GetCartProducts()!;
             if (!cartProducts.IsNullOrEmpty())
             {
                 if (cartProducts.Exists(prod => prod.ProductId == cartProduct.ProductId && prod.ProductSize == cartProduct.ProductSize))

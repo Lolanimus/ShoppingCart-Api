@@ -59,9 +59,12 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
 
         public int DeleteCartProduct(CartProduct cartProduct)
         {
+            if (cartProduct == null)
+                return 0;
+
             var prevCookie = GetPreviousCookies()!;
             var prevCartProducts = prevCookie.CartProducts!;
-            CartProduct prodToRemove = prevCartProducts.FirstOrDefault(prod => prod.Id == cartProduct.Id)!;
+            CartProduct prodToRemove = prevCartProducts.FirstOrDefault(prod => prod.ProductId == cartProduct.ProductId)!;
             if(prodToRemove.ProductSize == cartProduct.ProductSize && prodToRemove.Quantity > 1)
             {
                 prevCartProducts.First(

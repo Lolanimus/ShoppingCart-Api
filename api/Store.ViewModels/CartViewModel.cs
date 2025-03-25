@@ -50,15 +50,15 @@ namespace Store.ViewModels
             };
         }
 
-        public List<CartViewModel>? GetCart()
+        public async Task<List<CartViewModel>>? GetCart()
         {
             List<CartViewModel> allVms = new();
             try
             {
-                List<CartProduct>? allCartProducts = _userInteractor.GetCartProducts();
+                List<CartProduct>? allCartProducts = await _userInteractor.GetCartProducts()!;
 
                 if (allCartProducts.IsNullOrEmpty())
-                    return null;
+                    return null!;
 
                 foreach (CartProduct? cartProduct in allCartProducts)
                 {
@@ -82,7 +82,7 @@ namespace Store.ViewModels
             return allVms;
         }
 
-        public int AddCartProduct()
+        public async Task<int> AddCartProduct()
         {
             try
             {
@@ -94,7 +94,7 @@ namespace Store.ViewModels
                     Quantity = Quantity ?? 1,
                 };
 
-                return _userInteractor.AddCartProduct(cartProduct);
+                return await _userInteractor.AddCartProduct(cartProduct);
             }
             catch (Exception ex)
             {
@@ -104,11 +104,11 @@ namespace Store.ViewModels
             }
         }
 
-        public int DeleteCartProduct()
+        public async Task<int> DeleteCartProduct()
         {
             try
             {
-                return _userInteractor.DeleteCartProduct(ProductId, Helper.sizeConverter.ToEnum(ProductSize!));
+                return await _userInteractor.DeleteCartProduct(ProductId, Helper.sizeConverter.ToEnum(ProductSize!));
             }
             catch (Exception ex)
             {
