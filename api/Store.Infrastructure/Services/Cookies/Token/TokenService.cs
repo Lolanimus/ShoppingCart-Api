@@ -30,9 +30,9 @@ namespace Store.Infrastracture.Services.Cookies.Token
         {
             string? jsonCookies = _cookiesService.GetCookies();
 
-            if(jsonCookies.IsNullOrEmpty())
+            if(jsonCookies.IsNullOrEmpty() || !jsonCookies!.Contains("jwtToken"))
                 return null;
-
+            
             return JsonSerializer.Deserialize<Cookie>(jsonCookies!, DeserializerOptions.opts)!.JwtToken;
         }
 

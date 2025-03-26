@@ -51,9 +51,13 @@ namespace Store.Infrastracture.Services.UserInteractor
             return cartProducts!.Find(prod => prod.ProductId == productId && prod.ProductSize == size)!;
         }
 
-        virtual public async Task<int> DeleteCartProduct(Guid productId, ProductSize size)
+        virtual public async Task<int> DeleteCartProduct(Guid productId, ProductSize size, bool oneQuantity = true)
         {
-            return _cartProductsService.DeleteCartProduct(await GetCartProduct(productId, size));
+            //if(!oneQunatity)
+                return _cartProductsService.DeleteCartProduct(await GetCartProduct(productId, size), oneQuantity);
+            
+            // make functionality for one quantity at a time
+
         }
 
         virtual public async Task<int> AddCartProduct(CartProduct cartProduct)

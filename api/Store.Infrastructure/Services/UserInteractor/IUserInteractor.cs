@@ -13,7 +13,7 @@ namespace Store.Infrastracture.Services.UserInteractor
 
         Task<CartProduct> GetCartProduct(Guid productId, ProductSize size);
 
-        Task<int> DeleteCartProduct(Guid productId, ProductSize size);
+        Task<int> DeleteCartProduct(Guid productId, ProductSize size, bool oneQuantity = true);
 
         Task<int> AddCartProduct(CartProduct cartProduct);
 

@@ -57,7 +57,7 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
             _cookiesService.UpdateCookies(updatedJsonCookies);
         }
 
-        public int DeleteCartProduct(CartProduct cartProduct)
+        public int DeleteCartProduct(CartProduct cartProduct, bool oneQuantity = true)
         {
             if (cartProduct == null)
                 return 0;
@@ -67,11 +67,20 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
             CartProduct prodToRemove = prevCartProducts.FirstOrDefault(prod => prod.ProductId == cartProduct.ProductId)!;
             if(prodToRemove.ProductSize == cartProduct.ProductSize && prodToRemove.Quantity > 1)
             {
+                if (!oneQuantity)
+                {
+                    prevCartProducts.Remove(prodToRemove);
+                    prevCookie.CartProducts = prevCartProducts;
+                    _cookiesService.SetCookies(JsonSerializer.Serialize(prevCookie));
+                    return 1;
+                }
+
                 prevCartProducts.First(
                     prod => prod.ProductId == prodToRemove.ProductId 
                          && prod.ProductSize == prodToRemove.ProductSize
                 ).Quantity--;
-                _cookiesService.SetCookies(JsonSerializer.Serialize(prevCartProducts));
+                prevCookie.CartProducts = prevCartProducts;
+                _cookiesService.SetCookies(JsonSerializer.Serialize(prevCookie));
                 return 1;
             }
 
@@ -84,7 +93,7 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
             if (!prevCookie.CartProducts!.Any(prod => prod.ProductId == cartProduct.ProductId))
                 return 1;
             else
-                return -1;
+                return 0;
         }
 
         public void AddCartProduct(CartProduct cartProduct)

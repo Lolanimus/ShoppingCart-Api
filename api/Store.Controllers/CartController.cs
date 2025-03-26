@@ -65,12 +65,12 @@ namespace Store.Controllers
         }
 
         [HttpDelete("{productId}")]
-        public async Task<IActionResult> DeleteCartProduct(Guid productId, string? size = null)
+        public async Task<IActionResult> DeleteCartProduct(Guid productId, string? size = null, bool oneQuantity = true)
         {
             try
             {
                 CartViewModel cart = new CartViewModel(_userInteractor) { ProductId = productId, ProductSize = size };
-                return await cart.DeleteCartProduct() == 1 ? Ok(cart) : NotFound();
+                return await cart.DeleteCartProduct(oneQuantity) == 1 ? Ok(cart) : NotFound();
             }
             catch (Exception ex)
             {

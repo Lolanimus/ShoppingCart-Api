@@ -107,11 +107,11 @@ namespace Store.ViewModels
             }
         }
 
-        public async Task<int> DeleteCartProduct()
+        public async Task<int> DeleteCartProduct(bool oneQuantity = true)
         {
             try
             {
-                return await _userInteractor.DeleteCartProduct(ProductId, Helper.sizeConverter.ToEnum(ProductSize!));
+                return await _userInteractor.DeleteCartProduct(ProductId, Helper.sizeConverter.ToEnum(ProductSize!), oneQuantity);
             }
             catch (Exception ex)
             {
