@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Store.Infrastracture.Services.UserInteractor
+namespace Store.Infrastracture.Services.Cookies.UserInteractor
 {
     public class GuestInteractor : IUserInteractor
     {
@@ -22,6 +22,7 @@ namespace Store.Infrastracture.Services.UserInteractor
             _cartProductsService = cartProductsService;
             _productDAO = new ProductDAO();
         }
+
         virtual public async Task<CartProduct> IncludeProductAndUserInfo(CartProduct cartProduct)
         {
             var prod = await _productDAO.GetById(cartProduct.ProductId);
@@ -54,8 +55,8 @@ namespace Store.Infrastracture.Services.UserInteractor
         virtual public async Task<int> DeleteCartProduct(Guid productId, ProductSize size, bool oneQuantity = true)
         {
             //if(!oneQunatity)
-                return _cartProductsService.DeleteCartProduct(await GetCartProduct(productId, size), oneQuantity);
-            
+            return _cartProductsService.DeleteCartProduct(await GetCartProduct(productId, size), oneQuantity);
+
             // make functionality for one quantity at a time
 
         }

@@ -22,7 +22,7 @@ namespace Store.Tests.ViewModel
         [Fact]
         public async Task GetById()
         {
-            ProductViewModel prodVm = new() { Id = 5 };
+            ProductViewModel prodVm = new() { Id = new Guid("26C0A279-BD48-4D14-B31D-2B303CF7CDDD") };
             Product product = await prodVm.GetById();
             Assert.NotNull(product);
         }

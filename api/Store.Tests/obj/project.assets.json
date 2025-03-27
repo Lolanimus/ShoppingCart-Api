@@ -116,6 +116,25 @@
           "buildTransitive/net6.0/EntityFramework.targets": {}
         }
       },
+      "HttpContextMoq/1.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Moq": "4.16.1"
+        },
+        "compile": {
+          "lib/net8.0/HttpContextMoq.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/HttpContextMoq.dll": {
+            "related": ".pdb"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.AspNetCore.Antiforgery/2.3.0": {
         "type": "package",
         "dependencies": {
@@ -1977,6 +1996,23 @@
           "runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll": {
             "assetType": "runtime",
             "rid": "win"
+          }
+        }
+      },
+      "Moq/4.16.1": {
+        "type": "package",
+        "dependencies": {
+          "Castle.Core": "4.4.0",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "compile": {
+          "lib/netstandard2.1/Moq.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Moq.dll": {
+            "related": ".xml"
           }
         }
       },
@@ -4411,6 +4447,69 @@
         "tools/net6.0/any/ef6.runtimeconfig.json"
       ]
     },
+    "HttpContextMoq/1.7.0": {
+      "sha512": "Wx/pS841LshdGqiNUGx0JUvnaDrg1BmYrxmVG9oYjbf3lXAU/aX0bXiE/zAWnikon+RaqXt0/vK0R3wpOaRqRg==",
+      "type": "package",
+      "path": "httpcontextmoq/1.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "httpcontextmoq.1.7.0.nupkg.sha512",
+        "httpcontextmoq.nuspec",
+        "lib/net5.0/HttpContextMoq.dll",
+        "lib/net5.0/HttpContextMoq.pdb",
+        "lib/net6.0/HttpContextMoq.dll",
+        "lib/net6.0/HttpContextMoq.pdb",
+        "lib/net7.0/HttpContextMoq.dll",
+        "lib/net7.0/HttpContextMoq.pdb",
+        "lib/net8.0/HttpContextMoq.dll",
+        "lib/net8.0/HttpContextMoq.pdb",
+        "lib/net9.0/HttpContextMoq.dll",
+        "lib/net9.0/HttpContextMoq.pdb",
+        "lib/netcoreapp3.0/HttpContextMoq.dll",
+        "lib/netcoreapp3.0/HttpContextMoq.pdb",
+        "lib/netcoreapp3.1/HttpContextMoq.dll",
+        "lib/netcoreapp3.1/HttpContextMoq.pdb",
+        "lib/netstandard2.0/HttpContextMoq.dll",
+        "lib/netstandard2.0/HttpContextMoq.pdb",
+        "lib/netstandard2.1/HttpContextMoq.dll",
+        "lib/netstandard2.1/HttpContextMoq.pdb",
+        "src/HttpContextMoq/ClaimsIdentityMock.cs",
+        "src/HttpContextMoq/ClaimsPrincipalMock.cs",
+        "src/HttpContextMoq/ConnectionInfoMock.cs",
+        "src/HttpContextMoq/Extensions/ContextExtensions.cs",
+        "src/HttpContextMoq/FeatureCollectionMock.cs",
+        "src/HttpContextMoq/FormCollectionFake.cs",
+        "src/HttpContextMoq/FormCollectionMock.cs",
+        "src/HttpContextMoq/FormFileCollectionFake.cs",
+        "src/HttpContextMoq/FormFileCollectionMock.cs",
+        "src/HttpContextMoq/Generic/IContextMock.cs",
+        "src/HttpContextMoq/Generic/IContextMocks.cs",
+        "src/HttpContextMoq/Generic/MockCollection.cs",
+        "src/HttpContextMoq/HeaderDictionaryFake.cs",
+        "src/HttpContextMoq/HeaderDictionaryMock.cs",
+        "src/HttpContextMoq/HttpContextAccessorMock.cs",
+        "src/HttpContextMoq/HttpContextMock.cs",
+        "src/HttpContextMoq/HttpContextMoq.csproj",
+        "src/HttpContextMoq/HttpRequestMock.cs",
+        "src/HttpContextMoq/HttpResponseMock.cs",
+        "src/HttpContextMoq/IHeaderDictionaryMock.cs",
+        "src/HttpContextMoq/IItemsDictionaryMock.cs",
+        "src/HttpContextMoq/ItemsDictionaryFake.cs",
+        "src/HttpContextMoq/ItemsDictionaryMock.cs",
+        "src/HttpContextMoq/QueryCollectionFake.cs",
+        "src/HttpContextMoq/QueryCollectionMock.cs",
+        "src/HttpContextMoq/RequestCookieCollectionFake.cs",
+        "src/HttpContextMoq/RequestCookieCollectionMock.cs",
+        "src/HttpContextMoq/ResponseCookiesMock.cs",
+        "src/HttpContextMoq/ServiceProviderMock.cs",
+        "src/HttpContextMoq/SessionFake.cs",
+        "src/HttpContextMoq/SessionFeatureFake.cs",
+        "src/HttpContextMoq/SessionMock.cs"
+      ]
+    },
     "Microsoft.AspNetCore.Antiforgery/2.3.0": {
       "sha512": "C4o0buZnlzyhCpBny7//4Z9sKcxpVdFo0TRfE14q9Lac6+xkgwunPON+47FWzyqbUXu52SaABEoAiHC5lMam0A==",
       "type": "package",
@@ -6446,6 +6545,24 @@
         "runtimes/win/lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.dll",
         "runtimes/win/lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.xml",
         "useSharedDesignerContext.txt"
+      ]
+    },
+    "Moq/4.16.1": {
+      "sha512": "bw3R9q8cVNhWXNpnvWb0OGP4HadS4zvClq+T1zf7AF+tLY1haZ2AvbHidQekf4PDv1T40c6brZeT/V0IBq7cEQ==",
+      "type": "package",
+      "path": "moq/4.16.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Moq.dll",
+        "lib/net45/Moq.xml",
+        "lib/netstandard2.0/Moq.dll",
+        "lib/netstandard2.0/Moq.xml",
+        "lib/netstandard2.1/Moq.dll",
+        "lib/netstandard2.1/Moq.xml",
+        "moq.4.16.1.nupkg.sha512",
+        "moq.nuspec",
+        "moq.png"
       ]
     },
     "NETStandard.Library/1.6.1": {
@@ -11432,6 +11549,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "HttpContextMoq >= 1.7.0",
       "Microsoft.NET.Test.Sdk >= 17.8.0",
       "Store.Infrastracture >= 1.0.0",
       "Store.ViewModels >= 1.0.0",
@@ -11497,6 +11615,10 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "HttpContextMoq": {
+            "target": "Package",
+            "version": "[1.7.0, )"
+          },
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
             "version": "[17.8.0, )"

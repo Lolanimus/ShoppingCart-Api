@@ -22,8 +22,8 @@ namespace Store.Tests.DAO
         public async Task GetById()
         {
             ProductDAO dao = new();
-            Product selectedProducts = await dao.GetById(5);
-            Assert.True(selectedProducts.Id == 5);
+            Product selectedProducts = await dao.GetById(new Guid("26C0A279-BD48-4D14-B31D-2B303CF7CDDD"));
+            Assert.True(selectedProducts.Id == new Guid("26C0A279-BD48-4D14-B31D-2B303CF7CDDD"));
         }
     }
 }

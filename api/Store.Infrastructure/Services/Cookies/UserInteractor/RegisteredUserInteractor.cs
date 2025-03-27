@@ -8,11 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Store.Infrastracture.Services.UserInteractor
+namespace Store.Infrastracture.Services.Cookies.UserInteractor
 {
-    public class UserInteractor : GuestInteractor
+    public class RegisteredUserInteractor : GuestInteractor
     {
-        public UserInteractor(CartProductsService cartProductsService) : base(cartProductsService)
+        public RegisteredUserInteractor(CartProductsService cartProductsService) : base(cartProductsService)
         {
         }
 

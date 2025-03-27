@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Store.Infrastracture.DTO;
-using Store.Infrastracture.Services.UserInteractor;
+using Store.Infrastracture.Services.Cookies.UserInteractor;
 using Store.Models;
 using Store.ViewModels;
 using System;

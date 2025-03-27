@@ -1,9 +1,10 @@
 //using StackExchange.Redis;
 
-using Store.Infrastracture.Services.Authentication;
 using Store.Infrastracture.Services.Cookies;
+using Store.Infrastracture.Services.Cookies.Authentication;
 using Store.Infrastracture.Services.Cookies.CartProducts;
 using Store.Infrastracture.Services.Cookies.Token;
+using Store.Infrastracture.Services.Cookies.UserInteractor;
 using Store.Infrastracture.Services.UserInteractor;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,7 +24,7 @@ builder.Services.AddScoped<IUserInteractor>(serviceProvider =>
     var cartProductService = serviceProvider.GetRequiredService<CartProductsService>();
 
     return authService.IsUserLoggedIn() 
-        ? new UserInteractor(cartProductService) 
+        ? new RegisteredUserInteractor(cartProductService) 
         : new GuestInteractor(cartProductService);
 });
 

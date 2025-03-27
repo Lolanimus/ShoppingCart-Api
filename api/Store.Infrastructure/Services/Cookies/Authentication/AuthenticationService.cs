@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Store.Infrastracture.Services.Authentication
+namespace Store.Infrastracture.Services.Cookies.Authentication
 {
     public class AuthenticationService
     {

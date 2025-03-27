@@ -1,4 +1,5 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.IdentityModel.Tokens;
 using Store.Infrastracture.Services.Cookies;
 using Store.Models;
 using Store.Models.Cookies;

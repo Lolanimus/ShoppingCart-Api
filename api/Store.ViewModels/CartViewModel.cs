@@ -5,7 +5,7 @@ using Store.Infrastracture.DTO;
 using Store.Infrastracture.Helpers;
 using Store.Infrastracture.Helpers.PrdouctSizeConverter;
 using Store.Infrastracture.Services.Cookies;
-using Store.Infrastracture.Services.UserInteractor;
+using Store.Infrastracture.Services.Cookies.UserInteractor;
 using Store.Models;
 using System;
 using System.Collections.Generic;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Store.Infrastracture.Services.UserInteractor
+namespace Store.Infrastracture.Services.Cookies.UserInteractor
 {
     public interface IUserInteractor
     {
