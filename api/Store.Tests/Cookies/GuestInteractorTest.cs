@@ -255,6 +255,16 @@ namespace Store.Tests.Cookies
                 Assert.NotNull(cartProduct);
                 Assert.Equal(3, cartProducts.Count);
             }
+
+            public async Task IncrementCartProductQuantity()
+            {
+                await _inter.AddCartProduct(ProductQuantityIncrement);
+                var cartProducts = await _inter.GetCartProducts()!;
+                var cartProduct = await _inter.GetCartProduct(Data.FemaleCartProductId, Data.FemaleCartProductSize);
+                Assert.NotNull(cartProduct);
+                Assert.Equal(3, cartProduct.Quantity);
+                Assert.Equal(2, cartProducts.Count);
+            }
         }
     }
 }
