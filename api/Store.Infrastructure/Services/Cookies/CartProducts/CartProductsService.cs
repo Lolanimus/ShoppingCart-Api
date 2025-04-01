@@ -65,31 +65,28 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
 
             var prevCookie = GetPreviousCookies()!;
             var prevCartProducts = prevCookie.CartProducts!;
-            CartProduct prodToRemove = prevCartProducts.FirstOrDefault(prod => prod.ProductId == cartProduct.ProductId)!;
-            if(prodToRemove.ProductSize == cartProduct.ProductSize && prodToRemove.Quantity > 1)
-            {
-                if (!oneQuantity)
-                {
-                    prevCartProducts.Remove(prodToRemove);
-                    prevCookie.CartProducts = prevCartProducts;
-                    _cookiesService.SetCookies(JsonSerializer.Serialize(prevCookie));
-                    return 1;
-                }
 
+            CartProduct prodToRemove = prevCartProducts
+                .FirstOrDefault(
+                    prod => prod.ProductId == cartProduct.ProductId && 
+                    prod.ProductSize == cartProduct.ProductSize
+            )!;
+
+            if (oneQuantity && prodToRemove.Quantity > 1)
+            {
                 prevCartProducts.First(
                     prod => prod.ProductId == prodToRemove.ProductId 
                          && prod.ProductSize == prodToRemove.ProductSize
                 ).Quantity--;
                 prevCookie.CartProducts = prevCartProducts;
                 _cookiesService.SetCookies(JsonSerializer.Serialize(prevCookie));
-                return 1;
             }
-
-            prevCartProducts!.Remove(prodToRemove);
-            prevCookie.CartProducts = prevCartProducts;
-            string prevJsonCookie = JsonSerializer.Serialize(prevCookie);
-
-            _cookiesService.UpdateCookies(prevJsonCookie);
+            else
+            {
+                prevCartProducts!.Remove(prodToRemove);
+                prevCookie.CartProducts = prevCartProducts;
+                _cookiesService.UpdateCookies(JsonSerializer.Serialize(prevCookie));
+            }
 
             if (!prevCookie.CartProducts!.Any(prod => prod.ProductId == cartProduct.ProductId))
                 return 1;
