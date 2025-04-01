@@ -120,7 +120,7 @@ namespace Store.Tests.Cookies
         }
     }
    
-    public class UserInteractorTest : IClassFixture<UserInteractorTestFixture>, IDisposable
+    public class UserInteractorTest : IClassFixture<UserInteractorTestFixture>
     {
         private readonly IUserInteractor _inter;
         private UserInteractorTestFixture _classFixture;
@@ -147,6 +147,7 @@ namespace Store.Tests.Cookies
             await deleteTests.DeleteAllQuantityCartProduct();
         }
 
+        [Fact]
         public async Task RunPostTests()
         {
             var postTests = new Post(_inter);
@@ -229,17 +230,31 @@ namespace Store.Tests.Cookies
         {
             private IUserInteractor _inter;
 
+            public CartProduct ProductToAdd { get; } = new CartProduct()
+            {
+                ProductId = new Guid("F96308A1-369E-4FF3-B338-4F034E648FC8"),
+                ProductSize = ProductSize.L
+            };
+
+            public CartProduct ProductQuantityIncrement { get; } = new CartProduct()
+            {
+                ProductId = Data.FemaleCartProductId,
+                ProductSize = Data.FemaleCartProductSize
+            };
+
             public Post(IUserInteractor inter)
             {
                 _inter = inter;
             }
 
-            
-        }
-
-        public void Dispose()
-        {
-            Data.GlobalCookies = Data.InitialCookies;
+            public async Task AddNewCartProduct()
+            {
+                await _inter.AddCartProduct(ProductToAdd);
+                var cartProducts = await _inter.GetCartProducts()!;
+                var cartProduct = await _inter.GetCartProduct(new Guid("F96308A1-369E-4FF3-B338-4F034E648FC8"), ProductSize.L);
+                Assert.NotNull(cartProduct);
+                Assert.Equal(3, cartProducts.Count);
+            }
         }
     }
 }
