@@ -1,69 +1,105 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Store.Infrastracture.DAL;
 using Store.Infrastracture.Services.Cookies.CartProducts;
 using Store.Infrastracture.Services.Cookies.Token;
 using Store.Infrastracture.Services.Cookies;
-using Store.Infrastracture.Services.UserInteractor;
 using Store.Models;
 using Store.Models.Cookies;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
-using Xunit;
-using HttpContextMoq;
-using HttpContextMoq.Extensions;
-using Microsoft.Extensions.Primitives;
-using Microsoft.AspNetCore.Http.Features;
 using Store.Infrastracture.Services.Cookies.UserInteractor;
 using Store.Infrastracture.Services.Cookies.Authentication;
+using Moq;
+using System.Text;
+
 
 namespace Store.Tests.Cookies
 {
+    public static class Data
+    {
+        public static Guid AccessoryCartProductId { get; } = new("0F7A693A-8114-4527-9388-340A51DD0A3B");
+        public static Guid FemaleCartProductId { get; } = new("26C0A279-BD48-4D14-B31D-2B303CF7CDDD");
+        public static ProductSize FemaleCartProductSize { get; } = ProductSize.M;
+        public static Cookie InitialCookies { get; } = new()
+        {
+            JwtToken = "",
+            CartProducts = new List<CartProduct>()
+            {
+                new CartProduct()
+                {
+                    ProductId = Data.FemaleCartProductId,
+                    ProductSize = Data.FemaleCartProductSize,
+                    Quantity = 2
+                },
+                new CartProduct()
+                {
+                    ProductId = Data.AccessoryCartProductId,
+                    Quantity = 1
+                }
+            }
+        };
+        public static Cookie GlobalCookies { get; set; } = InitialCookies;
+    }
+
     public class UserInteractorTestFixture
     {
+        
         private readonly string key = "userInfo";
         private readonly ServiceProvider _serviceProvider;
         public IUserInteractor UserInteractor { get; }
 
-        public UserInteractorTestFixture()
+        private void Append(string key, string value, CookieOptions options)
         {
-            var cookies = new Cookie()
+            Cookie valueCookies = JsonSerializer.Deserialize<Cookie>(value)!;
+            Data.GlobalCookies.JwtToken = valueCookies.JwtToken ?? "";
+            Data.GlobalCookies.CartProducts!.Clear();
+            foreach (CartProduct cartProduct in valueCookies.CartProducts!)
             {
-                JwtToken = "",
-                CartProducts = new List<CartProduct>()
+                Data.GlobalCookies.CartProducts.Add(cartProduct);
+            }
+        }
+
+        private void Delete(string key)
+        {
+            Data.GlobalCookies.JwtToken = "";
+            Data.GlobalCookies.CartProducts!.Clear();
+        }
+
+        public UserInteractorTestFixture()
+        { 
+            var jsonCookies = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(Data.GlobalCookies));
+            var context = new Mock<HttpContext>();
+            var response = new Mock<HttpResponse>();
+            var request = new Mock<HttpRequest>();
+
+            var requestCookie = new Mock<IRequestCookieCollection>();
+
+            requestCookie.Setup(rc => rc[key]).Returns(JsonSerializer.Serialize(Data.GlobalCookies));
+
+            var responseCookie = new Mock<IResponseCookies>();
+            responseCookie.Setup(cxt => cxt.Append(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CookieOptions>()))
+                .Callback<string, string, CookieOptions>((key, value, opts) =>
                 {
-                    new CartProduct()
-                    {
-                        ProductId = new Guid("26C0A279-BD48-4D14-B31D-2B303CF7CDDD"),
-                        ProductSize = ProductSize.M,
-                        Quantity = 1
-                    },
-                    new CartProduct()
-                    {
-                        ProductId = new Guid("0F7A693A-8114-4527-9388-340A51DD0A3B"),
-                        Quantity = 1
-                    }
-                }
-            };
+                    Append(key, value, opts);
+                    requestCookie.Setup(rc => rc[key]).Returns(JsonSerializer.Serialize(Data.GlobalCookies));
+                });
+            responseCookie.Setup(cxt => cxt.Delete(It.IsAny<string>()))
+                .Callback<string>((key) =>
+                {
+                    Delete(key);
+                    requestCookie.Setup(rc => rc[key]).Returns(JsonSerializer.Serialize(Data.GlobalCookies));
+                });
 
-            var context = new HttpContextMock();
+            response.Setup(r => r.Cookies).Returns(responseCookie.Object);
+            request.Setup(r => r.Cookies).Returns(requestCookie.Object);
+            context.Setup(r => r.Response).Returns(response.Object);
+            context.Setup(r => r.Request).Returns(request.Object);
 
-            var request = new Dictionary<string, string>
-            {
-                { key, JsonSerializer.Serialize(cookies) }
-            };
-
-            context.SetupRequestCookies(request);
-
-            var contextAccessor = new HttpContextAccessorMock(context);
+            var contextAccessor = new Mock<IHttpContextAccessor>();
+            contextAccessor.Setup(c => c.HttpContext).Returns(context.Object);
 
             var _services = new ServiceCollection();
 
-            _services.AddSingleton<IHttpContextAccessor>(contextAccessor);
+            _services.AddSingleton<IHttpContextAccessor>(contextAccessor.Object);
             _services.AddScoped<CookiesService>();
             _services.AddScoped<CartProductsService>();
             _services.AddScoped<TokenService>();
@@ -72,7 +108,6 @@ namespace Store.Tests.Cookies
             {
                 var authService = serviceProvider.GetRequiredService<AuthenticationService>();
                 var cartProductService = serviceProvider.GetRequiredService<CartProductsService>();
-                cartProductService.SetCartProducts(cookies.CartProducts);
 
                 return authService.IsUserLoggedIn()
                     ? new RegisteredUserInteractor(cartProductService)
@@ -82,43 +117,129 @@ namespace Store.Tests.Cookies
             _serviceProvider = _services.BuildServiceProvider();
 
             UserInteractor = _serviceProvider.GetRequiredService<IUserInteractor>();
+        }
+    }
+   
+    public class UserInteractorTest : IClassFixture<UserInteractorTestFixture>, IDisposable
+    {
+        private readonly IUserInteractor _inter;
+        private UserInteractorTestFixture _classFixture;
 
-            context.SetupRequestService(UserInteractor);
+        public UserInteractorTest(UserInteractorTestFixture classFixture)
+        {
+            _classFixture = classFixture;
+            _inter = _classFixture.UserInteractor;
+        }
+
+        [Fact]
+        public async Task RunGetTests()
+        {
+            var getTests = new Get(_inter);
+            await getTests.GetCartProducts();
+            await getTests.GetCartProduct();
+        }
+
+        [Fact]
+        public async Task RunDeleteTests()
+        {
+            var deleteTests = new Delete(_inter);
+            await deleteTests.DeleteOneQuantityCartProduct();
+            await deleteTests.DeleteAllQuantityCartProduct();
+        }
+
+        public async Task RunPostTests()
+        {
+            var postTests = new Post(_inter);
+
+        }
+
+        public class Get
+        {
+            private readonly IUserInteractor _inter;
+
+            public Get(IUserInteractor inter)
+            {
+                _inter = inter;
+            }
+
+            public async Task GetCartProducts()
+            {
+                var cartProducts = await _inter.GetCartProducts()!;
+
+                // reads at least smth
+                Assert.NotNull(cartProducts);
+                // reads the right amount of objects
+                Assert.Equal(2, cartProducts.Count);
+                // the unspecified ProductSize for a Product with ProductGender == null
+                // is automatically assigned a ProductSize.Unknown
+                Assert.Equal(ProductSize.Unknown, cartProducts[1].ProductSize);
+                Assert.Null(cartProducts[1].Product!.ProductGender);
+
+                Assert.Equal(Data.FemaleCartProductSize, cartProducts[0].ProductSize);
+                Assert.Equal("Female", cartProducts[0].Product!.ProductGender);
+
+                Assert.True(cartProducts[0].ProductId == Data.FemaleCartProductId);
+            }
+
+            public async Task GetCartProduct()
+            {
+                var cartProduct = await _inter.GetCartProduct(
+                    Data.FemaleCartProductId,
+                    ProductSize.M
+                );
+
+                Assert.NotNull(cartProduct);
+                Assert.Equal(Data.FemaleCartProductId, cartProduct.ProductId);
+                Assert.Equal("Female", cartProduct.Product!.ProductGender);
+            }
+        }
+
+
+        public class Delete
+        {
+            private readonly IUserInteractor _inter;
+
+            public Delete(IUserInteractor inter)
+            {
+                _inter = inter;
+            }
+
+            public async Task DeleteOneQuantityCartProduct()
+            {
+                var cartProducts = await _inter.GetCartProducts()!;
+                Assert.Equal(2, cartProducts[0].Quantity);
+                await _inter.DeleteCartProduct(Data.FemaleCartProductId, Data.FemaleCartProductSize);
+                cartProducts = await _inter.GetCartProducts()!;
+                Assert.True(cartProducts.Count == 2);
+                Assert.Equal(1, cartProducts[0].Quantity);
+            }
+
+            public async Task DeleteAllQuantityCartProduct()
+            {
+                var cartProducts = await _inter.GetCartProducts()!;
+                Assert.Equal(1, cartProducts[0].Quantity);
+                await _inter.DeleteCartProduct(Data.FemaleCartProductId, Data.FemaleCartProductSize, false);
+                cartProducts = await _inter.GetCartProducts()!;
+                Assert.True(cartProducts.Count == 1);
+                Assert.True(cartProducts[0].ProductId == Data.AccessoryCartProductId);
+            }
+        }
+
+        public class Post
+        {
+            private IUserInteractor _inter;
+
+            public Post(IUserInteractor inter)
+            {
+                _inter = inter;
+            }
+
+            
         }
 
         public void Dispose()
         {
-            var contextAccessor = _serviceProvider.GetRequiredService<IHttpContextAccessor>();
-            contextAccessor.HttpContext.Response.Cookies.Delete(key);
-
-            // Dispose of the service provider
-            _serviceProvider.Dispose();
-        }
-    }
-
-    public class UserInteractorTest : IClassFixture<UserInteractorTestFixture>
-    {
-        private readonly IUserInteractor _userInteractor;
-
-        public UserInteractorTest(UserInteractorTestFixture classFixture)
-        {
-            _userInteractor = classFixture.UserInteractor;
-        }
-
-        [Fact]
-        public async Task GetCartProducts()
-        {
-            var cartProducts = await _userInteractor.GetCartProducts()!;
-
-            // reads at least smth
-            Assert.NotNull(cartProducts);
-            // reads the right amount of objects
-            Assert.Equal(2, cartProducts.Count);
-            // the unspecified ProductSize for a Product with ProductGender == null
-            // is automatically assigned a ProductSize.Unknown
-            Assert.Equal(ProductSize.Unknown, cartProducts[1].ProductSize);
-            
-            Assert.True(cartProducts[0].ProductId == new Guid("26C0A279-BD48-4D14-B31D-2B303CF7CDDD"));
+            Data.GlobalCookies = Data.InitialCookies;
         }
     }
 }

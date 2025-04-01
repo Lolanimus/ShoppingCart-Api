@@ -54,11 +54,7 @@ namespace Store.Infrastracture.Services.Cookies.UserInteractor
 
         virtual public async Task<int> DeleteCartProduct(Guid productId, ProductSize size, bool oneQuantity = true)
         {
-            //if(!oneQunatity)
             return _cartProductsService.DeleteCartProduct(await GetCartProduct(productId, size), oneQuantity);
-
-            // make functionality for one quantity at a time
-
         }
 
         virtual public async Task<int> AddCartProduct(CartProduct cartProduct)

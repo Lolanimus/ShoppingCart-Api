@@ -5,7 +5,6 @@ using Store.Infrastracture.Services.Cookies.Authentication;
 using Store.Infrastracture.Services.Cookies.CartProducts;
 using Store.Infrastracture.Services.Cookies.Token;
 using Store.Infrastracture.Services.Cookies.UserInteractor;
-using Store.Infrastracture.Services.UserInteractor;
 
 var builder = WebApplication.CreateBuilder(args);
 
