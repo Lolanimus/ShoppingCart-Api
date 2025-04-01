@@ -72,6 +72,8 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
                     prod.ProductSize == cartProduct.ProductSize
             )!;
 
+            int prodToRemoveQuantity = prodToRemove.Quantity;
+
             if (oneQuantity && prodToRemove.Quantity > 1)
             {
                 prevCartProducts.First(
@@ -88,7 +90,8 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
                 _cookiesService.UpdateCookies(JsonSerializer.Serialize(prevCookie));
             }
 
-            if (!prevCookie.CartProducts!.Any(prod => prod.ProductId == cartProduct.ProductId))
+            var deletedProd = prevCookie.CartProducts!.FirstOrDefault(prod => prod.ProductId == cartProduct.ProductId);
+            if (deletedProd == null || deletedProd.Quantity == prodToRemoveQuantity - 1)
                 return 1;
             else
                 return 0;

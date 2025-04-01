@@ -77,11 +77,6 @@ namespace Store.Infrastracture.Services.Cookies.UserInteractor
             return 1;
         }
 
-        virtual public void UpdateCartProduct(CartProduct product)
-        {
-            _cartProductsService.UpdateCartProduct(product);
-        }
-
         virtual public void ClearCookies()
         {
             _cartProductsService.ClearCookies();

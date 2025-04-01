@@ -64,13 +64,45 @@ namespace Store.Controllers
             }
         }
 
-        [HttpDelete("{productId}")]
-        public async Task<IActionResult> DeleteCartProduct(Guid productId, string? size = null, bool oneQuantity = true)
+        [HttpPost("qIncrement/{productId}")]
+        public async Task<IActionResult> IncrementQuantity(Guid productId, string? size = null)
         {
             try
             {
                 CartViewModel cart = new CartViewModel(_userInteractor) { ProductId = productId, ProductSize = size };
-                return await cart.DeleteCartProduct(oneQuantity) == 1 ? Ok(cart) : NotFound();
+                return await cart.AddCartProduct() == 1 ? Ok(cart) : BadRequest();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Problem in " + GetType().Name + " " +
+                MethodBase.GetCurrentMethod()!.Name + " " + ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError); // something went wrong
+            }
+        }
+
+        [HttpDelete("delete/{productId}")]
+        public async Task<IActionResult> DeleteCartProduct(Guid productId, string? size = null)
+        {
+            try
+            {
+                CartViewModel cart = new CartViewModel(_userInteractor) { ProductId = productId, ProductSize = size };
+                return await cart.DeleteCartProduct(false) == 1 ? Ok(cart) : NotFound();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Problem in " + GetType().Name + " " +
+                MethodBase.GetCurrentMethod()!.Name + " " + ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError); // something went wrong
+            }
+        }
+
+        [HttpDelete("qDecrement/{productId}")]
+        public async Task<IActionResult> DecrementQuantity(Guid productId, string? size = null)
+        {
+            try
+            {
+                CartViewModel cart = new CartViewModel(_userInteractor) { ProductId = productId, ProductSize = size };
+                return await cart.DeleteCartProduct(true) == 1 ? Ok(cart) : NotFound();
             }
             catch (Exception ex)
             {
