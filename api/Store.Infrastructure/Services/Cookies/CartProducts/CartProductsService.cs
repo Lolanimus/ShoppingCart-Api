@@ -97,7 +97,7 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
         public void AddCartProduct(CartProduct cartProduct)
         {
             var prevCookie = GetPreviousCookies();
-            var prevCartProducts = prevCookie.CartProducts;
+            var prevCartProducts = prevCookie!.CartProducts;
             prevCartProducts!.Add(cartProduct);
             prevCookie.CartProducts = prevCartProducts;
             string prevJsonCookie = JsonSerializer.Serialize(prevCookie);

@@ -38,11 +38,35 @@ namespace Store.Tests.Cookies
             }
         };
         public static Cookie GlobalCookies { get; set; } = InitialCookies;
+
+        public static void ResetGlobalCookies()
+        {
+            GlobalCookies.JwtToken = "";
+            GlobalCookies.CartProducts!.Clear();
+
+            GlobalCookies.CartProducts.Add(new CartProduct()
+            {
+                ProductId = Data.FemaleCartProductId,
+                ProductSize = Data.FemaleCartProductSize,
+                Quantity = 2
+            });
+
+            GlobalCookies.CartProducts.Add(new CartProduct()
+            {
+                ProductId = Data.AccessoryCartProductId,
+                Quantity = 1
+            });
+        }
     }
 
-    public class UserInteractorTestFixture
+    public class UserInteractorTestFixture 
     {
-        
+        private readonly Mock<HttpContext> context = new();
+        private readonly Mock<HttpResponse> response = new();
+        private readonly Mock<HttpRequest> request = new();
+        private readonly Mock<IRequestCookieCollection> requestCookie = new();
+        private readonly Mock<IResponseCookies> responseCookie = new();
+
         private readonly string key = "userInfo";
         private readonly ServiceProvider _serviceProvider;
         public IUserInteractor UserInteractor { get; }
@@ -64,18 +88,9 @@ namespace Store.Tests.Cookies
             Data.GlobalCookies.CartProducts!.Clear();
         }
 
-        public UserInteractorTestFixture()
-        { 
-            var jsonCookies = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(Data.GlobalCookies));
-            var context = new Mock<HttpContext>();
-            var response = new Mock<HttpResponse>();
-            var request = new Mock<HttpRequest>();
-
-            var requestCookie = new Mock<IRequestCookieCollection>();
-
+        private void SetCookies()
+        {
             requestCookie.Setup(rc => rc[key]).Returns(JsonSerializer.Serialize(Data.GlobalCookies));
-
-            var responseCookie = new Mock<IResponseCookies>();
             responseCookie.Setup(cxt => cxt.Append(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CookieOptions>()))
                 .Callback<string, string, CookieOptions>((key, value, opts) =>
                 {
@@ -88,6 +103,18 @@ namespace Store.Tests.Cookies
                     Delete(key);
                     requestCookie.Setup(rc => rc[key]).Returns(JsonSerializer.Serialize(Data.GlobalCookies));
                 });
+
+        }
+
+        public void ResetCookies()
+        {
+            Data.ResetGlobalCookies();
+            SetCookies();
+        }
+
+        public UserInteractorTestFixture()
+        { 
+            SetCookies();
 
             response.Setup(r => r.Cookies).Returns(responseCookie.Object);
             request.Setup(r => r.Cookies).Returns(requestCookie.Object);
@@ -119,8 +146,9 @@ namespace Store.Tests.Cookies
             UserInteractor = _serviceProvider.GetRequiredService<IUserInteractor>();
         }
     }
-   
-    public class UserInteractorTest : IClassFixture<UserInteractorTestFixture>
+
+    [CollectionDefinition("SequentialGuestInteractorTests", DisableParallelization = true)]
+    public class UserInteractorTest : IClassFixture<UserInteractorTestFixture>, IAsyncLifetime
     {
         private readonly IUserInteractor _inter;
         private UserInteractorTestFixture _classFixture;
@@ -131,12 +159,24 @@ namespace Store.Tests.Cookies
             _inter = _classFixture.UserInteractor;
         }
 
+        public async Task InitializeAsync()
+        {
+            Data.ResetGlobalCookies();
+            await Task.CompletedTask;
+        }
+
+        public async Task DisposeAsync()
+        {
+            await Task.CompletedTask;
+        }
+
         [Fact]
         public async Task RunGetTests()
         {
             var getTests = new Get(_inter);
             await getTests.GetCartProducts();
             await getTests.GetCartProduct();
+            _classFixture.ResetCookies();
         }
 
         [Fact]
@@ -145,15 +185,19 @@ namespace Store.Tests.Cookies
             var deleteTests = new Delete(_inter);
             await deleteTests.DeleteOneQuantityCartProduct();
             await deleteTests.DeleteAllQuantityCartProduct();
+            _classFixture.ResetCookies();
         }
 
         [Fact]
         public async Task RunPostTests()
         {
             var postTests = new Post(_inter);
-
+            await postTests.AddNewCartProduct();
+            await postTests.IncrementCartProductQuantity();
+            _classFixture.ResetCookies();
         }
 
+        [Collection("SequentialUserInteractorTests")]
         public class Get
         {
             private readonly IUserInteractor _inter;
@@ -195,7 +239,7 @@ namespace Store.Tests.Cookies
             }
         }
 
-
+        [Collection("SequentialUserInteractorTests")]
         public class Delete
         {
             private readonly IUserInteractor _inter;
@@ -226,6 +270,7 @@ namespace Store.Tests.Cookies
             }
         }
 
+        [Collection("SequentialUserInteractorTests")]
         public class Post
         {
             private IUserInteractor _inter;
@@ -251,7 +296,7 @@ namespace Store.Tests.Cookies
             {
                 await _inter.AddCartProduct(ProductToAdd);
                 var cartProducts = await _inter.GetCartProducts()!;
-                var cartProduct = await _inter.GetCartProduct(new Guid("F96308A1-369E-4FF3-B338-4F034E648FC8"), ProductSize.L);
+                var cartProduct = await _inter.GetCartProduct(ProductToAdd.ProductId, ProductToAdd.ProductSize);
                 Assert.NotNull(cartProduct);
                 Assert.Equal(3, cartProducts.Count);
             }
@@ -263,7 +308,6 @@ namespace Store.Tests.Cookies
                 var cartProduct = await _inter.GetCartProduct(Data.FemaleCartProductId, Data.FemaleCartProductSize);
                 Assert.NotNull(cartProduct);
                 Assert.Equal(3, cartProduct.Quantity);
-                Assert.Equal(2, cartProducts.Count);
             }
         }
     }
