@@ -102,7 +102,7 @@ namespace Store.Tests.Cookies
         }
     }
 
-    [CollectionDefinition("SequentialGuestInteractorTests", DisableParallelization = true)]
+    [Collection("Global Tests")]
     public class UserInteractorTest : IClassFixture<UserInteractorTestFixture>, IAsyncLifetime
     {
         private readonly IUserInteractor _inter;
@@ -232,7 +232,7 @@ namespace Store.Tests.Cookies
 
             public CartProduct ProductToAdd { get; } = new CartProduct()
             {
-                ProductId = new Guid("F96308A1-369E-4FF3-B338-4F034E648FC8"),
+                ProductId = Data.NewMaleCartProductId,
                 ProductSize = ProductSize.L
             };
 

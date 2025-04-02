@@ -1,4 +1,5 @@
 ﻿using Store.Infrastracture.DAL;
+using Store.Infrastracture.Global;
 using Store.Infrastracture.Global.Helpers;
 using Store.Models;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Store.Tests.DAO
 {
+    [Collection("Global Tests")]
     public class ProductDAOTest
     {
         [Fact]
@@ -39,8 +41,8 @@ namespace Store.Tests.DAO
         public async Task GetById()
         {
             ProductDAO dao = new();
-            Product selectedProducts = await dao.GetById(new Guid("B4E9C133-985A-478A-BCE4-04FF1DD085EF"));
-            Assert.True(selectedProducts.Id == new Guid("B4E9C133-985A-478A-BCE4-04FF1DD085EF"));
+            Product selectedProducts = await dao.GetById(Data.FemaleCartProductId);
+            Assert.True(selectedProducts.Id == Data.FemaleCartProductId);
         }
     }
 }

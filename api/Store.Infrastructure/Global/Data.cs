@@ -1,12 +1,22 @@
-﻿using Store.Models;
+﻿using Store.Infrastracture.Repository;
+using Store.Models;
 using Store.Models.Cookies;
 
 namespace Store.Infrastracture.Global
 {
     public static class Data
     {
-        public static Guid AccessoryCartProductId { get; } = new("B4E9C133-985A-478A-BCE4-04FF1DD085EF");
-        public static Guid FemaleCartProductId { get; } = new("AFCED627-F686-4674-B1E2-0926FC3DAC5C");
+        private static readonly StoreRepository<Product> _repo;
+        private static List<Product> allProducts = new();
+
+        static Data()
+        {
+            _repo = new StoreRepository<Product>();
+        }
+
+        public static Guid AccessoryCartProductId { get; set; }
+        public static Guid FemaleCartProductId { get; set; }
+        public static Guid NewMaleCartProductId { get; set; }
         public static ProductSize FemaleCartProductSize { get; } = ProductSize.M;
         public static Cookie InitialCookies { get; } = new()
         {
@@ -45,6 +55,14 @@ namespace Store.Infrastracture.Global
                 ProductId = Data.AccessoryCartProductId,
                 Quantity = 1
             });
+        }
+
+        public static async Task SetAllProducts()
+        {
+            allProducts = await _repo.GetAll();
+            AccessoryCartProductId = allProducts.FirstOrDefault(p => p.ProductName.StartsWith("Pierced"))!.Id;
+            FemaleCartProductId = allProducts.FirstOrDefault(p => p.ProductName.StartsWith("DANVOUY"))!.Id;
+            NewMaleCartProductId = allProducts.FirstOrDefault(p => p.ProductName.StartsWith("Mens Casual"))!.Id;
         }
     }
 }

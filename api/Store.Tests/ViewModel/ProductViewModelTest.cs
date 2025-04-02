@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Store.Infrastracture.Global;
 using Store.Models;
 using Store.ViewModels;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Store.Tests.ViewModel
 {
+    [Collection("Global Tests")]
     public class ProductViewModelTest
     {
         [Fact]
@@ -38,7 +40,7 @@ namespace Store.Tests.ViewModel
         [Fact]
         public async Task GetById()
         {
-            ProductViewModel prodVm = new() { Id = new Guid("B4E9C133-985A-478A-BCE4-04FF1DD085EF") };
+            ProductViewModel prodVm = new() { Id = Data.FemaleCartProductId };
             Product product = await prodVm.GetById();
             Assert.NotNull(product);
         }
