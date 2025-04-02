@@ -4181,6 +4181,20 @@
           "build/net6.0/xunit.runner.visualstudio.props": {}
         }
       },
+      "Store.Controllers/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc": "2.3.0",
+          "Store.ViewModels": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Store.Controllers.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Store.Controllers.dll": {}
+        }
+      },
       "Store.Infrastracture/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -11443,6 +11457,11 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
+    "Store.Controllers/1.0.0": {
+      "type": "project",
+      "path": "../Store.Controllers/Store.Controllers.csproj",
+      "msbuildProject": "../Store.Controllers/Store.Controllers.csproj"
+    },
     "Store.Infrastracture/1.0.0": {
       "type": "project",
       "path": "../Store.Infrastructure/Store.Infrastracture.csproj",
@@ -11463,6 +11482,7 @@
     "net8.0": [
       "Microsoft.NET.Test.Sdk >= 17.8.0",
       "Moq >= 4.20.72",
+      "Store.Controllers >= 1.0.0",
       "Store.Infrastracture >= 1.0.0",
       "Store.ViewModels >= 1.0.0",
       "coverlet.collector >= 6.0.0",
@@ -11502,6 +11522,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+            "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Controllers\\Store.Controllers.csproj": {
+              "projectPath": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Controllers\\Store.Controllers.csproj"
+            },
             "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Infrastructure\\Store.Infrastracture.csproj": {
               "projectPath": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Infrastructure\\Store.Infrastracture.csproj"
             },

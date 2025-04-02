@@ -10,6 +10,7 @@
         "dependencies": {
           "Microsoft.NET.Test.Sdk": "17.8.0",
           "Moq": "4.20.72",
+          "Store.Controllers": "1.0.0",
           "Store.Infrastracture": "1.0.0",
           "Store.ViewModels": "1.0.0",
           "coverlet.collector": "6.0.0",
@@ -2664,6 +2665,18 @@
         }
       },
       "xunit.runner.visualstudio/2.5.3": {},
+      "Store.Controllers/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc": "2.3.0",
+          "Store.ViewModels": "1.0.0"
+        },
+        "runtime": {
+          "Store.Controllers.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "Store.Infrastracture/1.0.0": {
         "dependencies": {
           "Azure.Identity": "1.13.2",
@@ -4284,6 +4297,11 @@
       "sha512": "sha512-HFFL6O+QLEOfs555SqHii48ovVa4CqGYanY+B32BjLpPptdE+wEJmCFNXlLHdEOD5LYeayb9EroaUpydGpcybg==",
       "path": "xunit.runner.visualstudio/2.5.3",
       "hashPath": "xunit.runner.visualstudio.2.5.3.nupkg.sha512"
+    },
+    "Store.Controllers/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Store.Infrastracture/1.0.0": {
       "type": "project",

@@ -239,3 +239,5 @@ C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Tests\obj\Debug\net8.0
 C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Tests\obj\Debug\net8.0\Store.Tests.pdb
 C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Tests\obj\Debug\net8.0\Store.Tests.genruntimeconfig.cache
 C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Tests\obj\Debug\net8.0\ref\Store.Tests.dll
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Tests\bin\Debug\net8.0\Store.Controllers.dll
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Tests\bin\Debug\net8.0\Store.Controllers.pdb

@@ -18,6 +18,7 @@ namespace Store.Infrastracture.Global
         public static Guid FemaleCartProductId { get; set; }
         public static Guid NewMaleCartProductId { get; set; }
         public static ProductSize FemaleCartProductSize { get; } = ProductSize.M;
+        public static ProductSize NewMaleCartProductSize { get; } = ProductSize.L;
         public static Cookie InitialCookies { get; } = new()
         {
             JwtToken = "",
