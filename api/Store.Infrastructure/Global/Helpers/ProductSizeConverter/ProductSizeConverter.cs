@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Store.Infrastracture.Helpers.ProductSizeConverter
+namespace Store.Infrastracture.Global.Helpers.ProductSizeConverter
 {
     public class ProductSizeConverter
     {

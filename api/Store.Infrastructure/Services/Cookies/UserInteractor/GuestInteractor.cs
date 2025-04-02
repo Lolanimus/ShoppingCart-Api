@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
 using Store.Infrastracture.DAL;
-using Store.Infrastracture.Helpers;
+using Store.Infrastracture.Global.Helpers;
 using Store.Infrastracture.Services.Cookies.CartProducts;
 using Store.Models;
 using System;

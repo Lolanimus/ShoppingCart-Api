@@ -1,9 +1,9 @@
-﻿using Store.Infrastracture.Helpers.ProductGenderConverter;
-using Store.Infrastracture.Helpers.ProductSizeConverter;
+﻿using Store.Infrastracture.Global.Helpers.ProductGenderConverter;
+using Store.Infrastracture.Global.Helpers.ProductSizeConverter;
 using Store.Models;
 
 
-namespace Store.Infrastracture.Helpers
+namespace Store.Infrastracture.Global.Helpers
 {
     public static class Helper
     {

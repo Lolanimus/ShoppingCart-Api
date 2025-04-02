@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microsoft.IdentityModel.Tokens;
 using Store.Infrastracture.DAL;
-using Store.Infrastracture.Helpers;
+using Store.Infrastracture.Global.Helpers;
 using Store.Models;
 
 namespace Store.Infrastracture;

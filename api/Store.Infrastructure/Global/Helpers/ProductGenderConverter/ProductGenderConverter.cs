@@ -1,7 +1,7 @@
 ﻿using Store.Infrastracture.DAL;
 using Store.Models;
 
-namespace Store.Infrastracture.Helpers.ProductGenderConverter
+namespace Store.Infrastracture.Global.Helpers.ProductGenderConverter
 {
     public class ProductGenderConverter
     {

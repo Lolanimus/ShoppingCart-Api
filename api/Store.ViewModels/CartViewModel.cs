@@ -2,8 +2,8 @@
 using Microsoft.IdentityModel.Tokens;
 using Store.Infrastracture.DAL;
 using Store.Infrastracture.DTO;
-using Store.Infrastracture.Helpers;
-using Store.Infrastracture.Helpers.ProductSizeConverter;
+using Store.Infrastracture.Global.Helpers;
+using Store.Infrastracture.Global.Helpers.ProductSizeConverter;
 using Store.Infrastracture.Services.Cookies;
 using Store.Infrastracture.Services.Cookies.UserInteractor;
 using Store.Models;

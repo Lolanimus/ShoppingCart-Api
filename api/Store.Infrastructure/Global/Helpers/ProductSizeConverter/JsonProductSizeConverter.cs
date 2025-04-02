@@ -6,15 +6,15 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using Store.Infrastracture.Helpers;
+using Store.Infrastracture.Global.Helpers;
 
-namespace Store.Infrastracture.Helpers.ProductSizeConverter
+namespace Store.Infrastracture.Global.Helpers.ProductSizeConverter
 {
     public class JsonProductSizeConverter : JsonConverter<ProductSize>
     {
         public override ProductSize Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if(reader.TokenType == JsonTokenType.Number)
+            if (reader.TokenType == JsonTokenType.Number)
                 return Helper.sizeConverter.ToEnum(Helper.sizeConverter.FromIntToStr(reader.GetInt32()));
             else
                 return Helper.sizeConverter.ToEnum(reader.GetString()!.ToLower());

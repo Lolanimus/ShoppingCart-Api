@@ -8,7 +8,7 @@ using Store.UseCases.Interfaces.Repository;
 using Store.Models;
 using System.Diagnostics;
 using System.Reflection;
-using Store.Infrastracture.Helpers;
+using Store.Infrastracture.Global.Helpers;
 
 namespace Store.Infrastracture.DAL
 {

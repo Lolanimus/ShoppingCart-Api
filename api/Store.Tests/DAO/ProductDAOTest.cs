@@ -1,5 +1,5 @@
 ﻿using Store.Infrastracture.DAL;
-using Store.Infrastracture.Helpers;
+using Store.Infrastracture.Global.Helpers;
 using Store.Models;
 using System;
 using System.Collections.Generic;

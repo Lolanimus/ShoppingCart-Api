@@ -9,57 +9,11 @@ using System.Text.Json;
 using Store.Infrastracture.Services.Cookies.UserInteractor;
 using Store.Infrastracture.Services.Cookies.Authentication;
 using Moq;
-using System.Text;
 using Store.Infrastracture.DAL;
-
+using Store.Infrastracture.Global;
 
 namespace Store.Tests.Cookies
 {
-    public static class Data
-    {
-        public static Guid AccessoryCartProductId { get; } = new("0F7A693A-8114-4527-9388-340A51DD0A3B");
-        public static Guid FemaleCartProductId { get; } = new("26C0A279-BD48-4D14-B31D-2B303CF7CDDD");
-        public static ProductSize FemaleCartProductSize { get; } = ProductSize.M;
-        public static Cookie InitialCookies { get; } = new()
-        {
-            JwtToken = "",
-            CartProducts = new List<CartProduct>()
-            {
-                new CartProduct()
-                {
-                    ProductId = Data.FemaleCartProductId,
-                    ProductSize = Data.FemaleCartProductSize,
-                    Quantity = 2
-                },
-                new CartProduct()
-                {
-                    ProductId = Data.AccessoryCartProductId,
-                    Quantity = 1
-                }
-            }
-        };
-        public static Cookie GlobalCookies { get; set; } = InitialCookies;
-
-        public static void ResetGlobalCookies()
-        {
-            GlobalCookies.JwtToken = "";
-            GlobalCookies.CartProducts!.Clear();
-
-            GlobalCookies.CartProducts.Add(new CartProduct()
-            {
-                ProductId = Data.FemaleCartProductId,
-                ProductSize = Data.FemaleCartProductSize,
-                Quantity = 2
-            });
-
-            GlobalCookies.CartProducts.Add(new CartProduct()
-            {
-                ProductId = Data.AccessoryCartProductId,
-                Quantity = 1
-            });
-        }
-    }
-
     public class UserInteractorTestFixture 
     {
         private readonly Mock<HttpContext> context = new();
