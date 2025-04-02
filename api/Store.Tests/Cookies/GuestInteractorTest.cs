@@ -10,6 +10,7 @@ using Store.Infrastracture.Services.Cookies.UserInteractor;
 using Store.Infrastracture.Services.Cookies.Authentication;
 using Moq;
 using System.Text;
+using Store.Infrastracture.DAL;
 
 
 namespace Store.Tests.Cookies
@@ -218,10 +219,10 @@ namespace Store.Tests.Cookies
                 // the unspecified ProductSize for a Product with ProductGender == null
                 // is automatically assigned a ProductSize.Unknown
                 Assert.Equal(ProductSize.Unknown, cartProducts[1].ProductSize);
-                Assert.Null(cartProducts[1].Product!.ProductGender);
+                Assert.True(cartProducts[1].Product!.ProductGender == ProductGender.Unknown);
 
                 Assert.Equal(Data.FemaleCartProductSize, cartProducts[0].ProductSize);
-                Assert.Equal("Female", cartProducts[0].Product!.ProductGender);
+                Assert.Equal(ProductGender.Female, cartProducts[0].Product!.ProductGender);
 
                 Assert.True(cartProducts[0].ProductId == Data.FemaleCartProductId);
             }
@@ -235,7 +236,7 @@ namespace Store.Tests.Cookies
 
                 Assert.NotNull(cartProduct);
                 Assert.Equal(Data.FemaleCartProductId, cartProduct.ProductId);
-                Assert.Equal("Female", cartProduct.Product!.ProductGender);
+                Assert.Equal(ProductGender.Female, cartProduct.Product!.ProductGender);
             }
         }
 

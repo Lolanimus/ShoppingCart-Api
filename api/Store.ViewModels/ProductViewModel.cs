@@ -1,4 +1,5 @@
 ﻿using Store.Infrastracture.DAL;
+using Store.Infrastracture.Helpers;
 using Store.Models;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Store.ViewModels
 
         public string ProductName { get; set; } = null!;
 
-        public string? ProductGender { get; set; }
+        public string ProductGender { get; set; } = null!;
 
         public string ProductImageUri { get; set; } = null!;
 
@@ -40,7 +41,7 @@ namespace Store.ViewModels
             {
                 Id = product.Id;
                 ProductName = product.ProductName;
-                ProductGender = product.ProductGender;
+                ProductGender = Helper.productGenderConverter.FromEnum(product.ProductGender);
                 ProductImageUri = product.ProductImageUri;
                 ProductPrice = product.ProductPrice;
                 ProductDesc = product.ProductDesc;
@@ -67,7 +68,7 @@ namespace Store.ViewModels
             List<ProductViewModel> allVms = new();
             try
             {
-                List<Product> allProducts = await _dao.GetAll();
+                List<Product> allProducts = await _dao.GetAll(Helper.productGenderConverter.ToEnum(ProductGender));
                 // we need to convert Student instance to StudentViewModel because
                 // the Web Layer isn't aware of the Domain class Student
                 foreach (Product product in allProducts)
@@ -76,7 +77,7 @@ namespace Store.ViewModels
                     {
                         Id = product.Id,
                         ProductName = product.ProductName,
-                        ProductGender = product.ProductGender,
+                        ProductGender = Helper.productGenderConverter.FromEnum(product.ProductGender),
                         ProductImageUri = product.ProductImageUri,
                         ProductPrice = product.ProductPrice,
                         ProductDesc = product.ProductDesc,

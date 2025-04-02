@@ -1,4 +1,4 @@
-﻿using Store.Infrastracture.Helpers.PrdouctSizeConverter;
+﻿using Store.Infrastracture.Helpers.ProductSizeConverter;
 using System;
 using System.Collections.Generic;
 using System.Linq;

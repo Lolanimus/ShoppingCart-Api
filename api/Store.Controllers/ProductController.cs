@@ -10,12 +10,12 @@ namespace Store.Controllers
     [ApiController]
     public class ProductController : Controller
     {
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
+        [HttpGet("all/{gender}")]
+        public async Task<IActionResult> GetAll(string gender)
         {
             try
             {
-                ProductViewModel viewmodel = new();
+                ProductViewModel viewmodel = new() { ProductGender = gender };
                 List<ProductViewModel> allProducts = await viewmodel.GetAll();
                 return Ok(allProducts);
             }

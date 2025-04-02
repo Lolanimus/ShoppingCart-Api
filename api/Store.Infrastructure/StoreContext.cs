@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Microsoft.IdentityModel.Tokens;
+using Store.Infrastracture.DAL;
+using Store.Infrastracture.Helpers;
 using Store.Models;
 
 namespace Store.Infrastracture;
@@ -29,14 +33,14 @@ public partial class StoreContext : DbContext
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
+    { 
         modelBuilder.Entity<Product>(entity =>
         {
             entity.ToTable("Product");
 
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
             entity.Property(e => e.ProductDesc).HasMaxLength(1024);
-            entity.Property(e => e.ProductGender).HasMaxLength(50);
+            entity.Property(e => e.ProductGender).HasConversion(Helper.productGenderValueConverter);
             entity.Property(e => e.ProductImageUri).HasMaxLength(256);
             entity.Property(e => e.ProductName).HasMaxLength(100);
             entity.Property(e => e.ProductPrice).HasColumnType("money");

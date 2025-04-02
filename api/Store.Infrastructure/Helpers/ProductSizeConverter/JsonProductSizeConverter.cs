@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Store.Infrastracture.Helpers;
 
-namespace Store.Infrastracture.Helpers.PrdouctSizeConverter
+namespace Store.Infrastracture.Helpers.ProductSizeConverter
 {
     public class JsonProductSizeConverter : JsonConverter<ProductSize>
     {

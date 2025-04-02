@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Store.Infrastracture.DAL;
+using System;
 using System.Collections.Generic;
 
 namespace Store.Models;
@@ -7,7 +8,7 @@ public class Product : StoreEntity
 {
     public string ProductName { get; set; } = null!;
 
-    public string? ProductGender { get; set; }
+    public ProductGender ProductGender { get; set; }
 
     public string ProductImageUri { get; set; } = null!;
 

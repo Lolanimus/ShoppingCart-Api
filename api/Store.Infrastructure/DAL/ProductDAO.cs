@@ -8,6 +8,7 @@ using Store.UseCases.Interfaces.Repository;
 using Store.Models;
 using System.Diagnostics;
 using System.Reflection;
+using Store.Infrastracture.Helpers;
 
 namespace Store.Infrastracture.DAL
 {
@@ -20,9 +21,14 @@ namespace Store.Infrastracture.DAL
             repo = new StoreRepository<Product>();
         }
 
-        public async Task<List<Product>> GetAll()
+        public async Task<List<Product>> GetAll(ProductGender productGender)
         {
-            return await repo.GetAll();
+            return await repo.GetSome(
+                p => productGender != ProductGender.wtfIsThis && ( 
+                    p.ProductGender == ProductGender.Uni || 
+                    p.ProductGender == productGender
+                )
+            );
         }
 
         public async Task<Product> GetById(Guid id)

@@ -4,12 +4,14 @@ INSERT INTO dbo.Product (
 	ProductName, 
 	ProductImageUri,
 	ProductPrice,
-	ProductDesc
+	ProductDesc,
+	ProductGender
 ) VALUES (
 	'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
 	'https://drive.usercontent.google.com/download?id=1QQJcNSeGvYjcs7Xb0ih1ZsJzI6EtwhCu',
 	109.95,
-	'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday'
+	'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday',
+	'Uni'
 );
 
 INSERT INTO dbo.Product (
@@ -76,39 +78,45 @@ INSERT INTO dbo.Product (
 	ProductName, 
 	ProductImageUri,
 	ProductPrice,
-	ProductDesc
+	ProductDesc,
+	ProductGender
 ) VALUES 
 (
 	'Solid Gold Petite Micropave',
 	'https://drive.usercontent.google.com/download?id=1WoAJNf_6TT4YxpxLgJuMsfJ9h4gPsIiS',
 	168,
-	'Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.'
+	'Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.',
+	'Uni'
 )
 
 INSERT INTO dbo.Product (
 	ProductName, 
 	ProductImageUri,
 	ProductPrice,
-	ProductDesc
+	ProductDesc,
+	ProductGender
 ) VALUES 
 (
 	'White Gold Plated Princess',
 	'https://drive.usercontent.google.com/download?id=1y2tkEjQSWm8icO2RZm7viYoeSu61g9f7',
 	9.99,
-	'Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine''s Day...'
+	'Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine''s Day...',
+	'Uni'
 )
 
 INSERT INTO dbo.Product (
 	ProductName, 
 	ProductImageUri,
 	ProductPrice,
-	ProductDesc
+	ProductDesc,
+	ProductGender
 ) VALUES 
 (
 	'Pierced Owl Rose Gold Plated Stainless Steel Double',
 	'https://drive.usercontent.google.com/download?id=1y2tkEjQSWm8icO2RZm7viYoeSu61g9f7',
 	10.99,
-	'Rose Gold Plated Double Flared Tunnel Plug Earrings. Made of 316L Stainless Steel'
+	'Rose Gold Plated Double Flared Tunnel Plug Earrings. Made of 316L Stainless Steel',
+	'Uni'
 )
 
 INSERT INTO dbo.Product (
@@ -175,13 +183,15 @@ INSERT INTO dbo.Product (
 	ProductName, 
 	ProductImageUri,
 	ProductPrice,
-	ProductDesc
+	ProductDesc,
+	ProductGender
 ) VALUES 
 (
 	'Opna Women''s Short Sleeve Moisture',
 	'https://drive.usercontent.google.com/download?id=1NlI7U0Y_YHucujyoBh7zDwdj2H00wgNk',
 	9.95,
-	'100% Polyester, Machine wash, 100% cationic polyester interlock, Machine Wash & Pre Shrunk for a Great Fit, Lightweight, roomy and highly breathable with moisture wicking fabric which helps to keep moisture away, Soft Lightweight Fabric with comfortable V-neck collar and a slimmer fit, delivers a sleek, more feminine silhouette and Added Comfort.'
+	'100% Polyester, Machine wash, 100% cationic polyester interlock, Machine Wash & Pre Shrunk for a Great Fit, Lightweight, roomy and highly breathable with moisture wicking fabric which helps to keep moisture away, Soft Lightweight Fabric with comfortable V-neck collar and a slimmer fit, delivers a sleek, more feminine silhouette and Added Comfort.',
+	'Uni'
 )
 
 INSERT INTO dbo.Product (

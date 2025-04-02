@@ -1,4 +1,5 @@
 ﻿using Store.Infrastracture.DAL;
+using Store.Infrastracture.Helpers;
 using Store.Models;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,8 @@ namespace Store.Tests.DAO
         public async Task GetAll()
         {
             ProductDAO dao = new();
-            List<Product> selectedProducts = await dao.GetAll();
-            Assert.True(selectedProducts.Count == 14);
+            List<Product> selectedProducts = await dao.GetAll(Helper.productGenderConverter.ToEnum("male"));
+            Assert.True(selectedProducts.Count == 6);
         }
 
         [Fact]

@@ -1,3 +1,9 @@
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\obj\Debug\net8.0\Store.Controllers.csproj.AssemblyReference.cache
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\obj\Debug\net8.0\Store.Controllers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\obj\Debug\net8.0\Store.Controllers.AssemblyInfoInputs.cache
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\obj\Debug\net8.0\Store.Controllers.AssemblyInfo.cs
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\obj\Debug\net8.0\Store.Controllers.csproj.CoreCompileInputs.cache
+C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\obj\Debug\net8.0\Store.Controllers.sourcelink.json
 C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\bin\Debug\net8.0\appsettings.json
 C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\bin\Debug\net8.0\Store.Controllers.deps.json
@@ -10,12 +16,6 @@ C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\bin\Debug\
 C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\bin\Debug\net8.0\Store.ViewModels.pdb
 C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\bin\Debug\net8.0\Store.Infrastracture.pdb
 C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\bin\Debug\net8.0\Store.Models.pdb
-C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\obj\Debug\net8.0\Store.Controllers.csproj.AssemblyReference.cache
-C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\obj\Debug\net8.0\Store.Controllers.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\obj\Debug\net8.0\Store.Controllers.AssemblyInfoInputs.cache
-C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\obj\Debug\net8.0\Store.Controllers.AssemblyInfo.cs
-C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\obj\Debug\net8.0\Store.Controllers.csproj.CoreCompileInputs.cache
-C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\obj\Debug\net8.0\Store.Controllers.sourcelink.json
 C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\obj\Debug\net8.0\Store.Co.A6AEFC32.Up2Date
 C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\obj\Debug\net8.0\Store.Controllers.dll
 C:\Users\Artem\Documents\repos\ShoppingCart-Api\api\Store.Controllers\obj\Debug\net8.0\refint\Store.Controllers.dll
