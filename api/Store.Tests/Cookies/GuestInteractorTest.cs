@@ -219,7 +219,7 @@ namespace Store.Tests.Cookies
                 // the unspecified ProductSize for a Product with ProductGender == null
                 // is automatically assigned a ProductSize.Unknown
                 Assert.Equal(ProductSize.Unknown, cartProducts[1].ProductSize);
-                Assert.True(cartProducts[1].Product!.ProductGender == ProductGender.Unknown);
+                Assert.True(cartProducts[1].Product!.ProductGender == ProductGender.Uni);
 
                 Assert.Equal(Data.FemaleCartProductSize, cartProducts[0].ProductSize);
                 Assert.Equal(ProductGender.Female, cartProducts[0].Product!.ProductGender);

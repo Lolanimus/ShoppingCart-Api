@@ -12,17 +12,33 @@ namespace Store.Tests.ViewModel
     public class ProductViewModelTest
     {
         [Fact]
-        public async Task GetAll()
+        public async Task GetAllMale()
         {
-            ProductViewModel prodVm = new();
+            ProductViewModel prodVm = new() { ProductGender = "male" };
             List<ProductViewModel> products = await prodVm.GetAll();
-            Assert.True(products.Count == 14);
+            Assert.Equal(8, products.Count);
+        }
+
+        [Fact]
+        public async Task GetAllFemale()
+        {
+            ProductViewModel prodVm = new() { ProductGender = "female" };
+            List<ProductViewModel> products = await prodVm.GetAll();
+            Assert.Equal(11, products.Count);
+        }
+
+        [Fact]
+        public async Task GetAllUnknownGender()
+        {
+            ProductViewModel prodVm = new() { ProductGender = "wtfIsThis" };
+            List<ProductViewModel> products = await prodVm.GetAll();
+            Assert.Empty(products);
         }
 
         [Fact]
         public async Task GetById()
         {
-            ProductViewModel prodVm = new() { Id = new Guid("26C0A279-BD48-4D14-B31D-2B303CF7CDDD") };
+            ProductViewModel prodVm = new() { Id = new Guid("B4E9C133-985A-478A-BCE4-04FF1DD085EF") };
             Product product = await prodVm.GetById();
             Assert.NotNull(product);
         }
