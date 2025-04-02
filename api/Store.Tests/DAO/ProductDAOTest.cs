@@ -12,19 +12,35 @@ namespace Store.Tests.DAO
     public class ProductDAOTest
     {
         [Fact]
-        public async Task GetAll()
+        public async Task GetAllMale()
         {
             ProductDAO dao = new();
             List<Product> selectedProducts = await dao.GetAll(Helper.productGenderConverter.ToEnum("male"));
-            Assert.True(selectedProducts.Count == 6);
+            Assert.Equal(8, selectedProducts.Count);
+        }
+
+        [Fact]
+        public async Task GetAllFemale()
+        {
+            ProductDAO dao = new();
+            List<Product> selectedProducts = await dao.GetAll(Helper.productGenderConverter.ToEnum("female"));
+            Assert.Equal(11, selectedProducts.Count);
+        }
+
+        [Fact]
+        public async Task GetAll()
+        {
+            ProductDAO dao = new();
+            List<Product> selectedProducts = await dao.GetAll(Helper.productGenderConverter.ToEnum("maleiugyu"));
+            Assert.Empty(selectedProducts);
         }
 
         [Fact]
         public async Task GetById()
         {
             ProductDAO dao = new();
-            Product selectedProducts = await dao.GetById(new Guid("26C0A279-BD48-4D14-B31D-2B303CF7CDDD"));
-            Assert.True(selectedProducts.Id == new Guid("26C0A279-BD48-4D14-B31D-2B303CF7CDDD"));
+            Product selectedProducts = await dao.GetById(new Guid("B4E9C133-985A-478A-BCE4-04FF1DD085EF"));
+            Assert.True(selectedProducts.Id == new Guid("B4E9C133-985A-478A-BCE4-04FF1DD085EF"));
         }
     }
 }
