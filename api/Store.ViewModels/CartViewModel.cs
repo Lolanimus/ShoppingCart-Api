@@ -121,11 +121,11 @@ namespace Store.ViewModels
             }
         }
 
-        public void ClearCookies()
+        public void ClearCart()
         {
             try
             {
-                _userInteractor.ClearCookies();
+                _userInteractor.ClearCart();
             }
             catch (Exception ex)
             {

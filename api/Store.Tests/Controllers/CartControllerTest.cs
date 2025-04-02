@@ -10,12 +10,12 @@ using Store.ViewModels;
 namespace Store.Tests.Controllers
 {
     [Collection("Global Tests")]
-    public class UserInteractorControllerTest : IClassFixture<UserInteractorTestFixture>, IAsyncLifetime
+    public class CartControllerTest : IClassFixture<UserInteractorTestFixture>, IAsyncLifetime
     {
         private readonly IUserInteractor _inter;
         private UserInteractorTestFixture _classFixture;
 
-        public UserInteractorControllerTest(UserInteractorTestFixture classFixture)
+        public CartControllerTest(UserInteractorTestFixture classFixture)
         {
             _classFixture = classFixture;
             _inter = _classFixture.UserInteractor;
@@ -43,7 +43,9 @@ namespace Store.Tests.Controllers
         [Fact]
         public async Task RunDeleteTests()
         {
-            // var deleteTests = new Delete(_inter);
+            var deleteTests = new Delete(_inter);
+            await deleteTests.DeleteDecrementQuantity();
+            await deleteTests.DeleteProductId();
         }
 
         [Fact]
@@ -104,6 +106,54 @@ namespace Store.Tests.Controllers
                 var afterCart = (List<CartViewModel>)((await cartController.GetCart()) as OkObjectResult)!.Value;
                 Assert.NotNull(afterCart);
                 Assert.Equal(2, afterCart.First(p => p.ProductId == Data.NewMaleCartProductId).Quantity);
+            }
+        }
+
+        private class Delete
+        {
+            private IUserInteractor _inter;
+
+            public Delete(IUserInteractor inter)
+            {
+                _inter = inter;
+            }
+
+            public async Task DeleteDecrementQuantity()
+            {
+                Data.ResetGlobalCookies();
+                CartController cartController = new(_inter);
+                await cartController.AddToCart(new()
+                {
+                    ProductId = Data.NewMaleCartProductId,
+                    ProductSize = Data.NewMaleCartProductSize,
+                    Quantity = 2
+                });
+                await cartController.DecrementQuantity(Data.NewMaleCartProductId, Helper.sizeConverter.FromEnum(Data.NewMaleCartProductSize));
+                var afterCart = (List<CartViewModel>)((await cartController.GetCart()) as OkObjectResult)!.Value;
+                Assert.Equal(3, afterCart.Count);
+                Assert.Equal(1, afterCart.First(p => p.ProductId == Data.NewMaleCartProductId).Quantity);
+                await cartController.DecrementQuantity(Data.NewMaleCartProductId, Helper.sizeConverter.FromEnum(Data.NewMaleCartProductSize));
+                var afterCart1 = (List<CartViewModel>)((await cartController.GetCart()) as OkObjectResult)!.Value;
+                Assert.Equal(2, afterCart1.Count);
+                Assert.Null(afterCart1.FirstOrDefault(p => p.ProductId == Data.NewMaleCartProductId));
+            }
+
+            public async Task DeleteProductId()
+            {
+                Data.ResetGlobalCookies();
+                CartController cartController = new(_inter);
+                await cartController.AddToCart(new()
+                {
+                    ProductId = Data.NewMaleCartProductId,
+                    ProductSize = Data.NewMaleCartProductSize,
+                    Quantity = 2
+                });
+                var beforeCart = (List<CartViewModel>)((await cartController.GetCart()) as OkObjectResult)!.Value;
+                Assert.Equal(3, beforeCart.Count);
+                await cartController.DeleteCartProduct(Data.NewMaleCartProductId, Helper.sizeConverter.FromEnum(Data.NewMaleCartProductSize));
+                var afterCart = (List<CartViewModel>)((await cartController.GetCart()) as OkObjectResult)!.Value;
+                Assert.Equal(2, afterCart.Count);
+                Assert.Null(afterCart.FirstOrDefault(p => p.ProductId == Data.NewMaleCartProductId));
             }
         }
     }

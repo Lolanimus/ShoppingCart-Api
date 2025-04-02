@@ -77,9 +77,9 @@ namespace Store.Infrastracture.Services.Cookies.UserInteractor
             return 1;
         }
 
-        virtual public void ClearCookies()
+        virtual public void ClearCart()
         {
-            _cartProductsService.ClearCookies();
+            _cartProductsService.ClearCart();
         }
     }
 }

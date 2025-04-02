@@ -113,11 +113,11 @@ namespace Store.Controllers
         }
 
         [HttpDelete]
-        public IActionResult ClearCookies()
+        public IActionResult ClearCart()
         {
             try
             {
-                _userInteractor.ClearCookies();
+                _userInteractor.ClearCart();
                 return Ok();
             }
             catch (Exception ex)

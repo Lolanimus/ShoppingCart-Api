@@ -17,6 +17,6 @@ namespace Store.Infrastracture.Services.Cookies.UserInteractor
 
         Task<int> AddCartProduct(CartProduct cartProduct);
 
-        void ClearCookies();
+        void ClearCart();
     }
 }

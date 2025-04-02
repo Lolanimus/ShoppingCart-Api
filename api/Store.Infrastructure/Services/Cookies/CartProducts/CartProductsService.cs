@@ -21,9 +21,13 @@ namespace Store.Infrastracture.Services.Cookies.CartProducts
             _cookiesService = cookiesService;
         }
 
-        public void ClearCookies()
+        public void ClearCart()
         {
+            string jwtToken = JsonSerializer.Deserialize<Cookie>(_cookiesService.GetCookies()!)!.JwtToken!;
+            var newCookies = new Cookie() { JwtToken = jwtToken };
+            string newCookiesJson = JsonSerializer.Serialize(newCookies);
             _cookiesService.ClearCookies();
+            _cookiesService.SetCookies(newCookiesJson);
         }
 
         public Cookie? GetPreviousCookies()
