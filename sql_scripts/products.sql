@@ -8,7 +8,7 @@ INSERT INTO dbo.Product (
 	ProductGender
 ) VALUES (
 	'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
-	'https://drive.usercontent.google.com/download?id=1QQJcNSeGvYjcs7Xb0ih1ZsJzI6EtwhCu',
+	'https://storage.googleapis.com/shopping-cart-bucket/images/81fPKd-2AYL._AC_SL1500_.jpg',
 	109.95,
 	'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday',
 	'Uni'
@@ -24,7 +24,7 @@ INSERT INTO dbo.Product (
 (
 	'Mens Casual Premium Slim Fit T-Shirts',
 	'Male',
-	'https://drive.usercontent.google.com/download?id=19QySJzNaMjx83mgprYxQZbsMnwEoZkig',
+	'https://storage.googleapis.com/shopping-cart-bucket/images/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
 	22.30,
 	'Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.'
 )
@@ -39,7 +39,7 @@ INSERT INTO dbo.Product (
 (
 	'Mens Cotton Jacket',
 	'Male',
-	'https://drive.usercontent.google.com/download?id=1soP84fsHYmeYtxKrC7M6-NQioGZlPAHc',
+	'https://storage.googleapis.com/shopping-cart-bucket/images/71li-ujtlUL._AC_UX679_.jpg',
 	55.99,
 	'great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.'
 )
@@ -54,7 +54,7 @@ INSERT INTO dbo.Product (
 (
 	'Mens Casual Slim Fit',
 	'Male',
-	'https://drive.usercontent.google.com/download?id=1RMezt__SlZ1atrKDu0OkOg0Zq1Ts5UVz',
+	'https://storage.googleapis.com/shopping-cart-bucket/images/71YXzeOuslL._AC_UY879_.jpg',
 	15.99,
 	'The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.'
 )
@@ -69,7 +69,7 @@ INSERT INTO dbo.Product (
 (
 	'John Hardy Women''s Legends Naga Gold & Silver Dragon Station Chain Bracelet',
 	'Female',
-	'https://drive.usercontent.google.com/download?id=1WnWT-2Lys1VvWIwTiOdFTRrpwvpm6bwr',
+	'https://storage.googleapis.com/shopping-cart-bucket/images/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg',
 	695,
 	'From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean''s pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.'
 )
@@ -83,7 +83,7 @@ INSERT INTO dbo.Product (
 ) VALUES 
 (
 	'Solid Gold Petite Micropave',
-	'https://drive.usercontent.google.com/download?id=1WoAJNf_6TT4YxpxLgJuMsfJ9h4gPsIiS',
+	'https://storage.googleapis.com/shopping-cart-bucket/images/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg',
 	168,
 	'Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.',
 	'Uni'
@@ -98,7 +98,7 @@ INSERT INTO dbo.Product (
 ) VALUES 
 (
 	'White Gold Plated Princess',
-	'https://drive.usercontent.google.com/download?id=1y2tkEjQSWm8icO2RZm7viYoeSu61g9f7',
+	'https://storage.googleapis.com/shopping-cart-bucket/images/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg',
 	9.99,
 	'Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine''s Day...',
 	'Uni'
@@ -113,7 +113,7 @@ INSERT INTO dbo.Product (
 ) VALUES 
 (
 	'Pierced Owl Rose Gold Plated Stainless Steel Double',
-	'https://drive.usercontent.google.com/download?id=1y2tkEjQSWm8icO2RZm7viYoeSu61g9f7',
+	'https://storage.googleapis.com/shopping-cart-bucket/images/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg',
 	10.99,
 	'Rose Gold Plated Double Flared Tunnel Plug Earrings. Made of 316L Stainless Steel',
 	'Uni'
@@ -129,7 +129,7 @@ INSERT INTO dbo.Product (
 (
 	'BIYLACLESEN Women''s 3-in-1 Snowboard Jacket Winter Coats',
 	'Female',
-	'https://drive.usercontent.google.com/download?id=1lM_DeN8ik7kHLeCYBHc9dg2R86Vx7BvA',
+	'https://storage.googleapis.com/shopping-cart-bucket/images/51Y5NI-I5jL._AC_UX679_.jpg',
 	56.99,
 	'Note:The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates'
 )
@@ -144,7 +144,7 @@ INSERT INTO dbo.Product (
 (
 	'Lock and Love Women''s Removable Hooded Faux Leather Moto Biker Jacket',
 	'Female',
-	'https://drive.usercontent.google.com/download?id=1nDxiOUI53w1zVSa76yiMPDuhjVqrKwuR',
+	'https://storage.googleapis.com/shopping-cart-bucket/images/81XH0e8fefL._AC_UY879_.jpg',
 	29.95,
 	'cool jacket'
 )
@@ -159,7 +159,7 @@ INSERT INTO dbo.Product (
 (
 	'Rain Jacket Women Windbreaker Striped Climbing Raincoats',
 	'Female',
-	'https://drive.usercontent.google.com/download?id=1RhadOWiKacoctW65UJ3p-36ztLcnzFbi',
+	'https://storage.googleapis.com/shopping-cart-bucket/images/71HblAHs5xL._AC_UY879_-2.jpg',
 	39.99,
 	'cool jacket as well'
 )
@@ -174,7 +174,7 @@ INSERT INTO dbo.Product (
 (
 	'MBJ Women''s Solid Short Sleeve Boat Neck V',
 	'Female',
-	'https://drive.usercontent.google.com/download?id=1RhadOWiKacoctW65UJ3p-36ztLcnzFbi',
+	'https://storage.googleapis.com/shopping-cart-bucket/images/71z3kpMAYsL._AC_UY879_.jpg',
 	9.85,
 	'badass t-shirt'
 )
@@ -188,10 +188,10 @@ INSERT INTO dbo.Product (
 ) VALUES 
 (
 	'Opna Women''s Short Sleeve Moisture',
-	'https://drive.usercontent.google.com/download?id=1NlI7U0Y_YHucujyoBh7zDwdj2H00wgNk',
+	'https://storage.googleapis.com/shopping-cart-bucket/images/51eg55uWmdL._AC_UX679_.jpg',
 	9.95,
 	'100% Polyester, Machine wash, 100% cationic polyester interlock, Machine Wash & Pre Shrunk for a Great Fit, Lightweight, roomy and highly breathable with moisture wicking fabric which helps to keep moisture away, Soft Lightweight Fabric with comfortable V-neck collar and a slimmer fit, delivers a sleek, more feminine silhouette and Added Comfort.',
-	'Uni'
+	'Female'
 )
 
 INSERT INTO dbo.Product (
@@ -204,7 +204,7 @@ INSERT INTO dbo.Product (
 (
 	'DANVOUY Womens T Shirt Casual Cotton Short',
 	'Female',
-	'https://drive.usercontent.google.com/download?id=1HV4Xb0sM6_ORGFnsLy0Ncc8fvtQ9CfdH',
+	'https://storage.googleapis.com/shopping-cart-bucket/images/61pHAEJ4NML._AC_UX679_.jpg',
 	12.99,
 	'95%Cotton,5%Spandex, Features: Casual, Short Sleeve, Letter Print,V-Neck,Fashion Tees, The fabric is soft and has some stretch., Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.'
 )
