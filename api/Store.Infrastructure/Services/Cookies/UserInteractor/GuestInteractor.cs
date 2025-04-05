@@ -59,9 +59,6 @@ namespace Store.Infrastracture.Services.Cookies.UserInteractor
 
         virtual public async Task<int> AddCartProduct(CartProduct cartProduct)
         {
-            if (!Helper.ClothesHasSize(await IncludeProductAndUserInfo(cartProduct)))
-                return 0;
-
             var cartProducts = await GetCartProducts()!;
             if (!cartProducts.IsNullOrEmpty())
             {
