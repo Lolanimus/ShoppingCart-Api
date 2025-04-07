@@ -30,4 +30,6 @@
 ehthumbs.db
 Thumbs.db
 
-.vs
+.vs/
+obj/
+bin/
