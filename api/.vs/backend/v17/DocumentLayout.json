@@ -3,32 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9A4EE148-B681-4C6F-8CFC-C3F196A42CBE}|Store.Infrastructure\\Store.Infrastracture.csproj|c:\\users\\artem\\documents\\repos\\shoppingcart-api\\api\\store.infrastructure\\services\\cookies\\userinteractor\\guestinteractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A4EE148-B681-4C6F-8CFC-C3F196A42CBE}|Store.Infrastructure\\Store.Infrastracture.csproj|solutionrelative:store.infrastructure\\services\\cookies\\userinteractor\\guestinteractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{09F30AB8-7FD8-434A-8037-6CF932237A8B}|Store.Tests\\Store.Tests.csproj|c:\\users\\artem\\documents\\repos\\shoppingcart-api\\api\\store.tests\\controllers\\cartcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{09F30AB8-7FD8-434A-8037-6CF932237A8B}|Store.Tests\\Store.Tests.csproj|solutionrelative:store.tests\\controllers\\cartcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{468D3BCB-B3AE-45AF-B4A2-5857A286DBB4}|Store.Controllers\\Store.Controllers.csproj|c:\\users\\artem\\documents\\repos\\shoppingcart-api\\api\\store.controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{468D3BCB-B3AE-45AF-B4A2-5857A286DBB4}|Store.Controllers\\Store.Controllers.csproj|solutionrelative:store.controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A4EE148-B681-4C6F-8CFC-C3F196A42CBE}|Store.Infrastructure\\Store.Infrastracture.csproj|c:\\users\\artem\\documents\\repos\\shoppingcart-api\\api\\store.infrastructure\\services\\cookies\\cartproducts\\cartproductsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A4EE148-B681-4C6F-8CFC-C3F196A42CBE}|Store.Infrastructure\\Store.Infrastracture.csproj|solutionrelative:store.infrastructure\\services\\cookies\\cartproducts\\cartproductsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{09F30AB8-7FD8-434A-8037-6CF932237A8B}|Store.Tests\\Store.Tests.csproj|c:\\users\\artem\\documents\\repos\\shoppingcart-api\\api\\store.tests\\cookies\\guestinteractortest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{09F30AB8-7FD8-434A-8037-6CF932237A8B}|Store.Tests\\Store.Tests.csproj|solutionrelative:store.tests\\cookies\\guestinteractortest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9A4EE148-B681-4C6F-8CFC-C3F196A42CBE}|Store.Infrastructure\\Store.Infrastracture.csproj|c:\\users\\artem\\documents\\repos\\shoppingcart-api\\api\\store.infrastructure\\services\\cookies\\userinteractor\\iuserinteractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A4EE148-B681-4C6F-8CFC-C3F196A42CBE}|Store.Infrastructure\\Store.Infrastracture.csproj|solutionrelative:store.infrastructure\\services\\cookies\\userinteractor\\iuserinteractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9A4EE148-B681-4C6F-8CFC-C3F196A42CBE}|Store.Infrastructure\\Store.Infrastracture.csproj|c:\\users\\artem\\documents\\repos\\shoppingcart-api\\api\\store.infrastructure\\services\\cookies\\userinteractor\\guestinteractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A4EE148-B681-4C6F-8CFC-C3F196A42CBE}|Store.Infrastructure\\Store.Infrastracture.csproj|solutionrelative:store.infrastructure\\services\\cookies\\userinteractor\\guestinteractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09F30AB8-7FD8-434A-8037-6CF932237A8B}|Store.Tests\\Store.Tests.csproj|c:\\users\\artem\\documents\\repos\\shoppingcart-api\\api\\store.tests\\viewmodel\\productviewmodeltest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09F30AB8-7FD8-434A-8037-6CF932237A8B}|Store.Tests\\Store.Tests.csproj|solutionrelative:store.tests\\viewmodel\\productviewmodeltest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8F57A940-CCBE-4879-9834-5F034EFEF286}|Store.ViewModels\\Store.ViewModels.csproj|c:\\users\\artem\\documents\\repos\\shoppingcart-api\\api\\store.viewmodels\\cartviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F57A940-CCBE-4879-9834-5F034EFEF286}|Store.ViewModels\\Store.ViewModels.csproj|solutionrelative:store.viewmodels\\cartviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A4EE148-B681-4C6F-8CFC-C3F196A42CBE}|Store.Infrastructure\\Store.Infrastracture.csproj|c:\\users\\artem\\documents\\repos\\shoppingcart-api\\api\\store.infrastructure\\global\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A4EE148-B681-4C6F-8CFC-C3F196A42CBE}|Store.Infrastructure\\Store.Infrastracture.csproj|solutionrelative:store.infrastructure\\global\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{09F30AB8-7FD8-434A-8037-6CF932237A8B}|Store.Tests\\Store.Tests.csproj|c:\\users\\artem\\documents\\repos\\shoppingcart-api\\api\\store.tests\\dao\\productdaotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{09F30AB8-7FD8-434A-8037-6CF932237A8B}|Store.Tests\\Store.Tests.csproj|solutionrelative:store.tests\\dao\\productdaotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9A4EE148-B681-4C6F-8CFC-C3F196A42CBE}|Store.Infrastructure\\Store.Infrastracture.csproj|c:\\users\\artem\\documents\\repos\\shoppingcart-api\\api\\store.infrastructure\\global\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A4EE148-B681-4C6F-8CFC-C3F196A42CBE}|Store.Infrastructure\\Store.Infrastracture.csproj|solutionrelative:store.infrastructure\\global\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{09F30AB8-7FD8-434A-8037-6CF932237A8B}|Store.Tests\\Store.Tests.csproj|c:\\users\\artem\\documents\\repos\\shoppingcart-api\\api\\store.tests\\viewmodel\\productviewmodeltest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09F30AB8-7FD8-434A-8037-6CF932237A8B}|Store.Tests\\Store.Tests.csproj|solutionrelative:store.tests\\viewmodel\\productviewmodeltest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A4EE148-B681-4C6F-8CFC-C3F196A42CBE}|Store.Infrastructure\\Store.Infrastracture.csproj|c:\\users\\artem\\documents\\repos\\shoppingcart-api\\api\\store.infrastructure\\services\\cookies\\userinteractor\\iuserinteractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A4EE148-B681-4C6F-8CFC-C3F196A42CBE}|Store.Infrastructure\\Store.Infrastracture.csproj|solutionrelative:store.infrastructure\\services\\cookies\\userinteractor\\iuserinteractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FEDE7C29-08FB-48F2-B22A-A06D83E32DA7}|Store.Web\\Store.Web.csproj|c:\\users\\artem\\documents\\repos\\shoppingcart-api\\api\\store.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -41,18 +53,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{468D3BCB-B3AE-45AF-B4A2-5857A286DBB4}|Store.Controllers\\Store.Controllers.csproj|c:\\users\\artem\\documents\\repos\\shoppingcart-api\\api\\store.controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{468D3BCB-B3AE-45AF-B4A2-5857A286DBB4}|Store.Controllers\\Store.Controllers.csproj|solutionrelative:store.controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{468D3BCB-B3AE-45AF-B4A2-5857A286DBB4}|Store.Controllers\\Store.Controllers.csproj|c:\\users\\artem\\documents\\repos\\shoppingcart-api\\api\\store.controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{468D3BCB-B3AE-45AF-B4A2-5857A286DBB4}|Store.Controllers\\Store.Controllers.csproj|solutionrelative:store.controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F57A940-CCBE-4879-9834-5F034EFEF286}|Store.ViewModels\\Store.ViewModels.csproj|c:\\users\\artem\\documents\\repos\\shoppingcart-api\\api\\store.viewmodels\\cartviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F57A940-CCBE-4879-9834-5F034EFEF286}|Store.ViewModels\\Store.ViewModels.csproj|solutionrelative:store.viewmodels\\cartviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9A4EE148-B681-4C6F-8CFC-C3F196A42CBE}|Store.Infrastructure\\Store.Infrastracture.csproj|c:\\users\\artem\\documents\\repos\\shoppingcart-api\\api\\store.infrastructure\\services\\cookies\\cartproducts\\cartproductsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A4EE148-B681-4C6F-8CFC-C3F196A42CBE}|Store.Infrastructure\\Store.Infrastracture.csproj|solutionrelative:store.infrastructure\\services\\cookies\\cartproducts\\cartproductsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,19 +70,98 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 1,
               "Title": "CartController.cs",
               "DocumentMoniker": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Controllers\\CartController.cs",
               "RelativeDocumentMoniker": "Store.Controllers\\CartController.cs",
               "ToolTip": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Controllers\\CartController.cs",
               "RelativeToolTip": "Store.Controllers\\CartController.cs",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAEwHUAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAEwDcAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T21:27:55.35Z"
+              "WhenOpened": "2025-04-02T21:27:55.35Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CartProductsService.cs",
+              "DocumentMoniker": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Infrastructure\\Services\\Cookies\\CartProducts\\CartProductsService.cs",
+              "RelativeDocumentMoniker": "Store.Infrastructure\\Services\\Cookies\\CartProducts\\CartProductsService.cs",
+              "ToolTip": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Infrastructure\\Services\\Cookies\\CartProducts\\CartProductsService.cs",
+              "RelativeToolTip": "Store.Infrastructure\\Services\\Cookies\\CartProducts\\CartProductsService.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAIA0wE0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T21:24:50.81Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GuestInteractor.cs",
+              "DocumentMoniker": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Infrastructure\\Services\\Cookies\\UserInteractor\\GuestInteractor.cs",
+              "RelativeDocumentMoniker": "Store.Infrastructure\\Services\\Cookies\\UserInteractor\\GuestInteractor.cs",
+              "ToolTip": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Infrastructure\\Services\\Cookies\\UserInteractor\\GuestInteractor.cs",
+              "RelativeToolTip": "Store.Infrastructure\\Services\\Cookies\\UserInteractor\\GuestInteractor.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAWwEgAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T21:23:01.145Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "GuestInteractorTest.cs",
+              "DocumentMoniker": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Tests\\Cookies\\GuestInteractorTest.cs",
+              "RelativeDocumentMoniker": "Store.Tests\\Cookies\\GuestInteractorTest.cs",
+              "ToolTip": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Tests\\Cookies\\GuestInteractorTest.cs",
+              "RelativeToolTip": "Store.Tests\\Cookies\\GuestInteractorTest.cs",
+              "ViewState": "AgIAAPwAAAAAAAAAAAAcwAgBAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T20:54:00.658Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CartControllerTest.cs",
+              "DocumentMoniker": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Tests\\Controllers\\CartControllerTest.cs",
+              "RelativeDocumentMoniker": "Store.Tests\\Controllers\\CartControllerTest.cs",
+              "ToolTip": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Tests\\Controllers\\CartControllerTest.cs",
+              "RelativeToolTip": "Store.Tests\\Controllers\\CartControllerTest.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAIA4wH8AAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T20:38:34.44Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Data.cs",
+              "DocumentMoniker": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Infrastructure\\Global\\Data.cs",
+              "RelativeDocumentMoniker": "Store.Infrastructure\\Global\\Data.cs",
+              "ToolTip": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Infrastructure\\Global\\Data.cs",
+              "RelativeToolTip": "Store.Infrastructure\\Global\\Data.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAWwBQAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-05T18:32:38.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CartViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.ViewModels\\CartViewModel.cs",
+              "RelativeDocumentMoniker": "Store.ViewModels\\CartViewModel.cs",
+              "ToolTip": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.ViewModels\\CartViewModel.cs",
+              "RelativeToolTip": "Store.ViewModels\\CartViewModel.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAEwFYAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T21:29:52.354Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "IUserInteractor.cs",
               "DocumentMoniker": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Infrastructure\\Services\\Cookies\\UserInteractor\\IUserInteractor.cs",
               "RelativeDocumentMoniker": "Store.Infrastructure\\Services\\Cookies\\UserInteractor\\IUserInteractor.cs",
@@ -95,96 +174,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "CartProductsService.cs",
-              "DocumentMoniker": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Infrastructure\\Services\\Cookies\\CartProducts\\CartProductsService.cs",
-              "RelativeDocumentMoniker": "Store.Infrastructure\\Services\\Cookies\\CartProducts\\CartProductsService.cs",
-              "ToolTip": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Infrastructure\\Services\\Cookies\\CartProducts\\CartProductsService.cs",
-              "RelativeToolTip": "Store.Infrastructure\\Services\\Cookies\\CartProducts\\CartProductsService.cs",
-              "ViewState": "AgIAAGIAAAAAAAAAAADgv3QAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T21:24:50.81Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GuestInteractor.cs",
-              "DocumentMoniker": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Infrastructure\\Services\\Cookies\\UserInteractor\\GuestInteractor.cs",
-              "RelativeDocumentMoniker": "Store.Infrastructure\\Services\\Cookies\\UserInteractor\\GuestInteractor.cs",
-              "ToolTip": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Infrastructure\\Services\\Cookies\\UserInteractor\\GuestInteractor.cs",
-              "RelativeToolTip": "Store.Infrastructure\\Services\\Cookies\\UserInteractor\\GuestInteractor.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAnwD8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T21:23:01.145Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "GuestInteractorTest.cs",
-              "DocumentMoniker": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Tests\\Cookies\\GuestInteractorTest.cs",
-              "RelativeDocumentMoniker": "Store.Tests\\Cookies\\GuestInteractorTest.cs",
-              "ToolTip": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Tests\\Cookies\\GuestInteractorTest.cs",
-              "RelativeToolTip": "Store.Tests\\Cookies\\GuestInteractorTest.cs",
-              "ViewState": "AgIAAM8AAAAAAAAAAAAcwN8AAABWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T20:54:00.658Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CartControllerTest.cs",
-              "DocumentMoniker": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Tests\\Controllers\\CartControllerTest.cs",
-              "RelativeDocumentMoniker": "Store.Tests\\Controllers\\CartControllerTest.cs",
-              "ToolTip": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Tests\\Controllers\\CartControllerTest.cs",
-              "RelativeToolTip": "Store.Tests\\Controllers\\CartControllerTest.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAEwDIAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T20:38:34.44Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "ProductDAOTest.cs",
               "DocumentMoniker": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Tests\\DAO\\ProductDAOTest.cs",
               "RelativeDocumentMoniker": "Store.Tests\\DAO\\ProductDAOTest.cs",
               "ToolTip": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Tests\\DAO\\ProductDAOTest.cs",
               "RelativeToolTip": "Store.Tests\\DAO\\ProductDAOTest.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAWwBQAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAASwBQAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-05T18:34:58.717Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "ProductViewModelTest.cs",
               "DocumentMoniker": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Tests\\ViewModel\\ProductViewModelTest.cs",
               "RelativeDocumentMoniker": "Store.Tests\\ViewModel\\ProductViewModelTest.cs",
               "ToolTip": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Tests\\ViewModel\\ProductViewModelTest.cs",
               "RelativeToolTip": "Store.Tests\\ViewModel\\ProductViewModelTest.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAWwA4AAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAASwBQAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-05T18:35:14.345Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CartViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.ViewModels\\CartViewModel.cs",
-              "RelativeDocumentMoniker": "Store.ViewModels\\CartViewModel.cs",
-              "ToolTip": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.ViewModels\\CartViewModel.cs",
-              "RelativeToolTip": "Store.ViewModels\\CartViewModel.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAgwH8AAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T21:29:52.354Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Web\\Program.cs",
               "RelativeDocumentMoniker": "Store.Web\\Program.cs",
@@ -192,12 +208,11 @@
               "RelativeToolTip": "Store.Web\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T16:17:37.765Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-04T16:17:37.765Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "CookiesService.cs",
               "DocumentMoniker": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Infrastructure\\Services\\Cookies\\CookiesService.cs",
               "RelativeDocumentMoniker": "Store.Infrastructure\\Services\\Cookies\\CookiesService.cs",
@@ -205,25 +220,11 @@
               "RelativeToolTip": "Store.Infrastructure\\Services\\Cookies\\CookiesService.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAA1wCcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T20:31:41.289Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-04T20:31:41.289Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Data.cs",
-              "DocumentMoniker": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Infrastructure\\Global\\Data.cs",
-              "RelativeDocumentMoniker": "Store.Infrastructure\\Global\\Data.cs",
-              "ToolTip": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Infrastructure\\Global\\Data.cs",
-              "RelativeToolTip": "Store.Infrastructure\\Global\\Data.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-05T18:32:38.7Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "ProductController.cs",
               "DocumentMoniker": "C:\\Users\\Artem\\Documents\\repos\\ShoppingCart-Api\\api\\Store.Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "Store.Controllers\\ProductController.cs",

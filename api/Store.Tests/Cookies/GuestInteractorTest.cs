@@ -149,6 +149,7 @@ namespace Store.Tests.Cookies
             var postTests = new Post(_inter);
             await postTests.AddNewCartProduct();
             await postTests.IncrementCartProductQuantity();
+            await postTests.AddTwoNewCartProductsWithTheSameSize();
             _classFixture.ResetCookies();
         }
 
@@ -254,6 +255,18 @@ namespace Store.Tests.Cookies
                 var cartProduct = await _inter.GetCartProduct(ProductToAdd.ProductId, ProductToAdd.ProductSize);
                 Assert.NotNull(cartProduct);
                 Assert.Equal(3, cartProducts.Count);
+            }
+
+            public async Task AddTwoNewCartProductsWithTheSameSize()
+            {
+                CartProduct cartProduct1 = new() { ProductId = Data.NewMaleCartProductId, ProductSize = ProductSize.M };
+                await _inter.AddCartProduct(cartProduct1);
+                await _inter.AddCartProduct(ProductToAdd);
+                await _inter.AddCartProduct(cartProduct1);
+                var cartProductAfter = await _inter.GetCartProduct(ProductToAdd.ProductId, ProductToAdd.ProductSize);
+                var cartProduct1After = await _inter.GetCartProduct(cartProduct1.ProductId, cartProduct1.ProductSize);
+                Assert.Equal(2, cartProductAfter.Quantity);
+                Assert.Equal(2, cartProduct1After.Quantity);
             }
 
             public async Task IncrementCartProductQuantity()

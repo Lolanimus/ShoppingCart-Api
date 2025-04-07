@@ -64,12 +64,13 @@ namespace Store.Infrastracture.Services.Cookies.UserInteractor
             {
                 if (cartProducts.Exists(prod => prod.ProductId == cartProduct.ProductId && prod.ProductSize == cartProduct.ProductSize))
                 {
-                    cartProducts.First(prod => prod.ProductId == cartProduct.ProductId).Quantity++;
+                    cartProducts.First(prod => prod.ProductId == cartProduct.ProductId && prod.ProductSize == cartProduct.ProductSize).Quantity++;
                     _cartProductsService.SetCartProducts(cartProducts);
                     return 1;
                 }
             }
 
+            if(cartProduct.Quantity == 0) cartProduct.Quantity++;
             _cartProductsService.AddCartProduct(cartProduct);
             return 1;
         }

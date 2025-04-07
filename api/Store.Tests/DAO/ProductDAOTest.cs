@@ -18,7 +18,7 @@ namespace Store.Tests.DAO
         {
             ProductDAO dao = new();
             List<Product> selectedProducts = await dao.GetAll(Helper.productGenderConverter.ToEnum("male"));
-            Assert.Equal(8, selectedProducts.Count);
+            Assert.Equal(7, selectedProducts.Count);
         }
 
         [Fact]

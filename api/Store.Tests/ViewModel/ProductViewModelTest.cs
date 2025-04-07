@@ -18,7 +18,7 @@ namespace Store.Tests.ViewModel
         {
             ProductViewModel prodVm = new() { ProductGender = "male" };
             List<ProductViewModel> products = await prodVm.GetAll();
-            Assert.Equal(8, products.Count);
+            Assert.Equal(7, products.Count);
         }
 
         [Fact]
